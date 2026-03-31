@@ -9,18 +9,6 @@
   <!-- Preconnect for font performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!--
-    Typography system (aligned with PDF design deck fonts):
-    ┌─────────────────────────┬──────────────────────────────────────────┐
-    │ PDF font                │ Role → Web substitution                  │
-    ├─────────────────────────┼──────────────────────────────────────────┤
-    │ BrightWall              │ h1 / primary titles  → Permanent Marker  │
-    │ Barlow Condensed        │ h2 / h3 / section    → Roboto Condensed  │
-    │ Cakerolli               │ body text            → Baloo 2           │
-    │ (editorial / quotes)    │ blockquotes          → Playfair Display  │
-    └─────────────────────────┴──────────────────────────────────────────┘
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Baloo+2:wght@400;500;600&family=Roboto+Condensed:wght@400;600&family=Permanent+Marker&family=Fredoka+One&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -71,25 +59,27 @@
 <section id="hero">
 
   <!-- Decorative diagonal wave accent — top-left -->
-  <svg class="hero-wave-accent" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Decorative waveform -->
+<!-- Add in the affrican woman svg -->
+  <!-- <svg class="hero-wave-accent" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#ia-clip)"><g clip-path="url(#ia-clip2)">
     <path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#D1B266"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#D1B266"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#D1B266"/>
     </g></g>
     <defs><clipPath id="ia-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath><clipPath id="ia-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath></defs>
-  </svg>
+  </svg> -->
 
   <!-- Decorative diagonal wave accent — top-right (mirrored) -->
-  <svg class="hero-wave-accent-right" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- <svg class="hero-wave-accent-right" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#iar-clip)"><g clip-path="url(#iar-clip2)">
     <path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#D1B266"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#D1B266"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#D1B266"/>
     </g></g>
     <defs><clipPath id="iar-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath><clipPath id="iar-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath></defs>
-  </svg>
+  </svg> -->
 
   <!-- Hero logo + wordmark -->
   <div class="hero-logo-wrap">
     <!-- Brand logo (non-brown variant) -->
-    <img src="graphics/brand/logo-stitch.png"
+    <img src="graphics/brand/logo-gemini1.png"
          class="hero-mark hero-community-mark"
          alt="VocalPrint"
          width="120"
@@ -110,27 +100,16 @@
 
   <!-- Status badge -->
   <div class="hero-badge">
-    <span class="hero-badge-dot"></span>
-    Founded 2025 &nbsp;·&nbsp; Grambling, Louisiana &nbsp;·&nbsp; Pre-Launch
+    Founded 2025 &nbsp;·&nbsp; Louisiana, USA &nbsp;·&nbsp; Pre-Launch
   </div>
 
   <!-- Headline -->
-  <h1>Voice Is Identity.<br><em>Identity Is Data.</em><br>Data Has a Crisis.</h1>
+  <h1>Voice Is Identity.<br><em>Identity Is Data.</em><br>Don't Let The AI Age Erase It.</h1>
 
   <!-- Intro -->
   <p class="hero-intro">
-    VocalPrint is a living, crowdsourced, AI-curated museum of sound — building the
-    identity infrastructure and verified voice corpus that AI companies need, and
-    communities deserve.
+    VocalPrint is a living, community built, and AI-curated museum of sound. It is designed to preserve voice as identity while building a verified voice corpus that both AI systems require and communities can trust.
   </p>
-
-  <!-- Decorative waveform -->
-  <svg class="hero-waveform" viewBox="0 0 548 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g clip-path="url(#hw-clip)">
-      <path d="M2.87087 242.676C3.47369 242.972 4.12421 243.115 4.77039 243.115C5.72015 243.115 6.66123 242.802 7.43752 242.194L101.477 168.647L153.154 194.401C154.685 195.161 156.528 194.948 157.851 193.858L198.868 159.86L221.905 175.154C223.449 176.183 225.479 176.11 226.949 174.972L245.194 160.889L307.357 212.492C309.044 213.891 311.521 213.813 313.117 212.297L377.735 150.725H395.602C396.721 150.725 397.801 150.291 398.608 149.513L424.238 124.837H442.83C443.984 124.837 445.09 124.376 445.901 123.56L510.298 58.7783L517.761 76.5265C518.473 78.2162 520.203 79.2587 521.998 79.1762C523.824 79.0763 525.394 77.834 525.914 76.0748L546.688 6.01133C547.147 4.46498 546.714 2.79266 545.56 1.66765C544.407 0.54264 542.72 0.15171 541.197 0.642545L471.765 23.1428C470.022 23.7075 468.821 25.3103 468.764 27.1433C468.708 28.9763 469.809 30.6487 471.518 31.3176L488.184 37.8765L434.005 92.3896H415.465C414.346 92.3896 413.271 92.824 412.464 93.5972L386.79 118.278H368.975C367.86 118.278 366.793 118.708 365.986 119.472L309.873 172.943L248.52 122.391C246.959 121.106 244.717 121.075 243.116 122.305L223.05 137.807L199.926 122.148C198.33 121.067 196.21 121.171 194.731 122.4L151.35 158.37L100.457 132.347C98.9569 131.583 97.1485 131.752 95.8171 132.794L2.09892 206.072C1.04942 206.893 0.433594 208.157 0.433594 209.495V238.771C0.433594 240.431 1.37902 241.947 2.87087 242.676Z" fill="#D1B266"/>
-    </g>
-    <defs><clipPath id="hw-clip"><rect width="548" height="300" fill="white"/></clipPath></defs>
-  </svg>
 
   <!-- Scroll hint -->
   <div class="scroll-hint">Scroll</div>
@@ -141,10 +120,10 @@
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- DIVIDER: teal-dark → cream — clean border line          -->
 <!-- ═══════════════════════════════════════════════════════ -->
-<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="12" fill="#0D3528"/>
-  <rect y="12" width="1440" height="12" fill="#FFF6E1"/>
-  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.5"/>
+<svg class="elegant-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="30" fill="#0D3528"/>
+  <rect y="30" width="1440" height="30" fill="#FFF6E1"/>
+  <line x1="0" y1="30" x2="1440" y2="30" stroke="#D1B266" stroke-width="3" opacity="0.8"/>
 </svg>
 
 
@@ -153,8 +132,8 @@
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="problem" class="bg-cream" style="position:relative;overflow:hidden;">
 
-  <!-- Decorative: Africa map — represents the diasporic context -->
-  <img src="graphics/africa.svg"
+  <!-- Decorative: ZEUS -->
+  <img src="graphics/zeus.svg"
        class="section-bg-img section-bg-img--right"
        alt="" aria-hidden="true">
 
@@ -175,7 +154,7 @@
 
     <p class="problem-lead">
       Every two weeks, a language vanishes. Over 40% of the world's 7,000 languages are
-      endangered — and fewer than 15% have been digitized. But the crisis runs deeper than
+      endangered, yet fewer than 15% have been digitized. This crisis runs deeper than
       preservation statistics. It is a crisis of belonging, of infrastructure, and of who
       AI was built to hear.
     </p>
@@ -196,9 +175,8 @@
         </div>
         <p class="card-body">
           Major speech-to-text systems from Amazon, Apple, Google, IBM, and Microsoft all
-          show significant racial and dialectal disparities. AI is now screening job
-          applicants, transcribing doctor–patient conversations, and grading students —
-          and it mishears half the population at twice the rate of the other half.
+          show significant racial and dialectal disparities. AI now screens job
+          applicants, transcribes medical conversations, and grades students. It mishears half the population while deciding their future.
         </p>
         <span class="card-source">Source: ACM FAccT 2025 · Built In · Axios, Nov 2025</span>
       </div>
@@ -214,8 +192,8 @@
         </blockquote>
         <span class="card-source">— World Psychiatry, 2005</span>
         <p class="card-body" style="margin-top: 0.9rem;">
-          Second and third-generation diaspora individuals often cannot speak their heritage
-          language fluently but deeply feel its loss. The urgency is temporal: elderly
+          2nd and 3rd-generation diaspora individuals often cannot speak their heritage
+          language fluently but keep the longing for it. The urgency is temporal: elderly
           speakers are aging out <em>now</em>. Nobody pays for "preservation." People pay
           for belonging, recognition, and continuity.
         </p>
@@ -234,16 +212,11 @@
           Hundreds of endangered languages exist only in oral form. When a language has no
           written corpus, the entire localization supply chain breaks down. Whoever builds
           the verified oral corpus for low-resource languages becomes the infrastructure
-          layer for everyone downstream — AI companies, edtech, fintech, healthcare.
+          layer for everyone downstream: AI companies, edtech, fintech, healthcare.
         </p>
       </div>
 
     </div><!-- .grid-3 -->
-
-    <blockquote class="pullquote" style="margin-top: 3.5rem;">
-      "The same emotional logic that drives Ancestry DNA test purchases drives VocalPrint's
-      consumer value proposition. The product is not an archive. It is identity infrastructure."
-    </blockquote>
 
   </div>
 </section>
@@ -269,35 +242,16 @@
        class="section-bg-img section-bg-img--right"
        alt="" aria-hidden="true">
 
-  <!-- Community silhouette decoration — building section -->
-  <svg style="position:absolute;bottom:-20px;right:-30px;width:260px;opacity:0.06;pointer-events:none;" viewBox="0 0 358 219" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g clip-path="url(#bld-fp-c)">
-      <path d="M357.059 158.546C356.467 142.576 347.605 128.076 333.05 117.378C326.326 112.441 318.39 108.314 309.49 105.234C322.512 94.3104 330.799 77.9167 330.799 59.574C330.799 26.6934 304.175 0.0330811 271.333 0.0330811C238.488 0.0330811 211.864 26.6934 211.864 59.574C211.864 77.9167 220.154 94.3104 233.177 105.234C224.272 108.314 216.346 112.441 209.625 117.378C195.071 128.072 186.221 142.576 185.608 158.546C185.392 164.152 186.01 168.872 187.313 172.893C209.557 178.397 239.017 181.749 271.333 181.749C303.73 181.749 333.254 178.38 355.519 172.855C356.712 168.838 357.267 164.126 357.059 158.546Z" fill="#f1e8cf"/>
-      <path d="M171.705 158.546C171.112 142.576 162.254 128.076 147.692 117.378C140.971 112.441 133.036 108.314 124.136 105.234C137.158 94.3104 145.444 77.9167 145.444 59.574C145.444 26.6934 118.82 0.0330811 85.979 0.0330811C53.1335 0.0330811 26.5092 26.6934 26.5092 59.574C26.5092 77.9167 34.8 94.3104 47.8222 105.234C38.9178 108.314 30.9911 112.441 24.2704 117.378C9.71619 128.072 0.862597 142.576 0.253172 158.546C0.0373337 164.152 0.655225 168.872 1.95872 172.893C24.2027 178.397 53.6625 181.749 85.979 181.749C118.376 181.749 147.899 178.38 170.164 172.855C171.358 168.838 171.912 164.126 171.705 158.546Z" fill="#f1e8cf"/>
-      <path d="M269.788 194.202C269.158 177.223 259.737 161.804 244.26 150.436C237.116 145.186 228.682 140.801 219.219 137.521C233.062 125.915 241.869 108.488 241.869 88.9884C241.869 54.0359 213.569 25.6976 178.658 25.6976C143.739 25.6976 115.439 54.0359 115.439 88.9884C115.439 108.488 124.25 125.915 138.093 137.525C128.63 140.801 120.2 145.186 113.06 150.436C97.5876 161.804 88.1754 177.223 87.5237 194.202C87.2994 200.159 87.9553 205.18 89.3392 209.447C112.988 215.303 144.302 218.862 178.658 218.862C213.095 218.862 244.48 215.282 268.146 209.409C269.416 205.134 270.004 200.13 269.788 194.202Z" fill="#D1B266"/>
-    </g>
-    <defs><clipPath id="bld-fp-c"><rect width="357.204" height="218.788" fill="white"/></clipPath></defs>
-  </svg>
-
   <div class="container">
 
     <div class="section-header">
       <div class="eyebrow">Exhibit 02 &nbsp;·&nbsp; The Vision</div>
-      <h2 style="color: var(--cream);">Not an Archive.<br>Identity Infrastructure.</h2>
+      <h2 style="color: var(--cream);">Identity Infrastructure,<br>Not an Archive.</h2>
     </div>
 
     <p class="manifesto-text">
-      VocalPrint is not a preservation project. Preservation implies something static —
-      a shelf, a record, a photograph of something dying. VocalPrint is a <em>living</em>
-      museum: crowdsourced, community-verified, AI-curated, and commercially viable
-      precisely because the communities it serves are the ones who build it.
+      VocalPrint is not a preservation project, i.e. <em>a shelf, a record, or a photograph of something dying</em>. We are a living museum building on a foundation of community trust. While a competitor can copy technology, they cannot replicate a model rooted in genuine sovereignty and consent. Our commercial viability grows from the very communities that build the corpus.
     </p>
-
-    <blockquote class="pullquote">
-      "The moat that cannot be replicated is community trust. A well-funded competitor
-      can copy the technology. They cannot copy ten years of trust relationships with
-      Ndebele speakers in Zimbabwe or Yoruba elders in Lagos."
-    </blockquote>
 
     <div class="grid-3" style="margin-top: 3rem;">
 
@@ -307,13 +261,11 @@
         <span class="phase-label">Phase 1 &nbsp;·&nbsp; Starting Point</span>
         <h3 style="color: var(--cream);">The Museum</h3>
         <p class="phase-card-body">
-          A consumer-facing heritage platform where diaspora families capture, preserve,
-          and engage with inherited voices as living things — not scholarly archives.
-          The emotional entry point. The community-building mechanism. The first product.
+          A consumer platform for the diaspora to preserve the sound of home. This is our first product and the emotional entry point for the community. It is the community-building mechanism that powers everything follows.
         </p>
         <div class="phase-meta">
           <div class="phase-meta-label">Closest Analog</div>
-          <div class="phase-meta-value">Ancestry meets a language learning tool, with a private family dimension</div>
+          <div class="phase-meta-value">Ancestry DNA for the voice</div>
         </div>
         <div class="phase-meta" style="margin-top: 0.8rem;">
           <div class="phase-meta-label">Revenue</div>
@@ -328,9 +280,8 @@
         <h3 style="color: var(--cream);">The Corpus</h3>
         <p class="phase-card-body">
           A verified, community-consented, linguistically-tagged voice corpus with full
-          provenance documentation. For AI companies whose products fail accented speakers
-          at twice the error rate. ElevenLabs is already being sued for inadequate consent.
-          Ethical architecture is a competitive moat here, not just a principle.
+          provenance documentation. We provide the "Corrective Data" for AI companies that currently fail accented speakers.
+          Ethical architecture is our competitive moat.
         </p>
         <div class="phase-meta">
           <div class="phase-meta-label">Buyers</div>
@@ -348,18 +299,12 @@
         <span class="phase-label">Phase 3 &nbsp;·&nbsp; Emergent</span>
         <h3 style="color: var(--cream);">The Infrastructure</h3>
         <p class="phase-card-body">
-          300+ languages that ElevenLabs and every other voice AI company will never
-          touch commercially. The long-term infrastructure play for global edtech,
-          fintech, and localization companies entering low-resource language markets.
-          This opportunity draws itself when Phases 1 and 2 are working.
+          The long-term infrastructure play for 300+ languages that big tech will never touch.
+          We become the global gateway for any company entering low-resource language markets.
         </p>
         <div class="phase-meta">
           <div class="phase-meta-label">Sequencing</div>
           <div class="phase-meta-value">Community trust → Corpus → Commercial layer → Infrastructure moat</div>
-        </div>
-        <div class="phase-meta" style="margin-top: 0.8rem;">
-          <div class="phase-meta-label">The Duolingo Parallel</div>
-          <div class="phase-meta-value">Duolingo built a movement — the data accumulated. VocalPrint's advantage is intentionality.</div>
         </div>
       </div>
 
@@ -384,10 +329,10 @@
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="how" class="bg-off-white" style="position:relative;overflow:hidden;">
 
-  <!-- Waveform visualization decoration — bottom right -->
-  <svg style="position:absolute;bottom:-40px;right:-50px;width:200px;opacity:0.06;pointer-events:none;" viewBox="0 0 548 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M2.87087 242.676C3.47369 242.972 4.12421 243.115 4.77039 243.115C5.72015 243.115 6.66123 242.802 7.43752 242.194L101.477 168.647L153.154 194.401C154.685 195.161 156.528 194.948 157.851 193.858L198.868 159.86L221.905 175.154C223.449 176.183 225.479 176.11 226.949 174.972L245.194 160.889L307.357 212.492C309.044 213.891 311.521 213.813 313.117 212.297L377.735 150.725H395.602C396.721 150.725 397.801 150.291 398.608 149.513L424.238 124.837H442.83C443.984 124.837 445.09 124.376 445.901 123.56L510.298 58.7783L517.761 76.5265C518.473 78.2162 520.203 79.2587 521.998 79.1762C523.824 79.0763 525.394 77.834 525.914 76.0748L546.688 6.01133C547.147 4.46498 546.714 2.79266 545.56 1.66765C544.407 0.54264 542.72 0.15171 541.197 0.642545L471.765 23.1428C470.022 23.7075 468.821 25.3103 468.764 27.1433C468.708 28.9763 469.809 30.6487 471.518 31.3176C471.518 31.3176 479.689 34.5232 488.184 37.8765L434.005 92.3896H415.465C414.346 92.3896 413.271 92.824 412.464 93.5972L386.79 118.278H368.975C367.86 118.278 366.793 118.708 365.986 119.472L309.873 172.943L248.52 122.391C246.959 121.106 244.717 121.075 243.116 122.305L223.05 137.807L199.926 122.148C198.33 121.067 196.21 121.171 194.731 122.4L151.35 158.37L100.457 132.347C98.9569 131.583 97.1485 131.752 95.8171 132.794L2.09892 206.072C1.04942 206.893 0.433594 208.157 0.433594 209.495V238.771C0.433594 240.431 1.37902 241.947 2.87087 242.676Z" fill="#22665C"/>
-  </svg>
+  <img src="graphics/scroll.svg"
+       class="section-bg-img section-bg-img--left"
+       alt="" aria-hidden="true"
+       style="opacity:0.04;">
 
   <div class="container">
 
@@ -397,15 +342,13 @@
     </div>
 
     <p class="governance-lead">
-      The governance infrastructure is the MVP — not the app. The consent framework,
-      data model, and community advisory structure must ship before the first recording
-      is made.
+      We do not build the app first. We build the trust. The consent framework and data model must exist before the first recording is made.
     </p>
     <p class="governance-sub">
       Voice data is biometric data in several jurisdictions. Oral traditions are communally
-      owned, not individually owned. The IP architecture for voice data has three distinct
+      owned, not individually owned. The IP architecture has three distinct
       layers: contributor owns their voice, platform may own the recorded artifact,
-      community may have claims on cultural content expressed. Getting this wrong at the
+      community may hold claims on the cultural content expressed. Getting this wrong at the
       start is irreversible. Getting it right is a moat.
     </p>
 
@@ -454,9 +397,7 @@
         <div class="doc-n-content">
           <div class="doc-title">Entity Structure Document</div>
           <p class="doc-desc">
-            Certificate of incorporation as a Public Benefit Corporation — which embeds the
-            public benefit mission legally before any investor can pressure it away. This
-            decision must precede incorporation and fundraising.
+            Certificate of incorporation as a Public Benefit Corporation, codifying the mission as a permanent requirement, protecting from future market or investor pressures.
           </p>
         </div>
       </li>
@@ -465,9 +406,7 @@
         <div class="doc-n-content">
           <div class="doc-title">Ethics Advisory Council Terms of Reference</div>
           <p class="doc-desc">
-            Composition, actual authority, decision-making process, triggers for involvement.
-            Written before there is anything to advise on. Functional, with real veto power —
-            not a tokenistic diversity board.
+            Composition and authority of a functional oversight board with veto power, established before data collection to ensure independent governnce.
           </p>
         </div>
       </li>
@@ -512,20 +451,10 @@
 <section id="founder" class="bg-teal" style="position:relative;overflow:hidden;">
 
   <!-- Decorative: map — global language geography -->
-  <img src="graphics/map.svg"
+  <img src="graphics/inca.svg"
        class="section-bg-img section-bg-img--left"
        alt="" aria-hidden="true"
        style="opacity:0.04;">
-
-  <!-- Community silhouette top-left decoration -->
-  <svg style="position:absolute;top:0;left:-40px;width:220px;opacity:0.05;pointer-events:none;" viewBox="0 0 358 219" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g clip-path="url(#fnd-fp-c)">
-      <path d="M357.059 158.546C356.467 142.576 347.605 128.076 333.05 117.378C326.326 112.441 318.39 108.314 309.49 105.234C322.512 94.3104 330.799 77.9167 330.799 59.574C330.799 26.6934 304.175 0.0330811 271.333 0.0330811C238.488 0.0330811 211.864 26.6934 211.864 59.574C211.864 77.9167 220.154 94.3104 233.177 105.234C224.272 108.314 216.346 112.441 209.625 117.378C195.071 128.072 186.221 142.576 185.608 158.546C185.392 164.152 186.01 168.872 187.313 172.893C209.557 178.397 239.017 181.749 271.333 181.749C303.73 181.749 333.254 178.38 355.519 172.855C356.712 168.838 357.267 164.126 357.059 158.546Z" fill="#f1e8cf"/>
-      <path d="M171.705 158.546C171.112 142.576 162.254 128.076 147.692 117.378C140.971 112.441 133.036 108.314 124.136 105.234C137.158 94.3104 145.444 77.9167 145.444 59.574C145.444 26.6934 118.82 0.0330811 85.979 0.0330811C53.1335 0.0330811 26.5092 26.6934 26.5092 59.574C26.5092 77.9167 34.8 94.3104 47.8222 105.234C38.9178 108.314 30.9911 112.441 24.2704 117.378C9.71619 128.072 0.862597 142.576 0.253172 158.546C0.0373337 164.152 0.655225 168.872 1.95872 172.893C24.2027 178.397 53.6625 181.749 85.979 181.749C118.376 181.749 147.899 178.38 170.164 172.855C171.358 168.838 171.912 164.126 171.705 158.546Z" fill="#f1e8cf"/>
-      <path d="M269.788 194.202C269.158 177.223 259.737 161.804 244.26 150.436C237.116 145.186 228.682 140.801 219.219 137.521C233.062 125.915 241.869 108.488 241.869 88.9884C241.869 54.0359 213.569 25.6976 178.658 25.6976C143.739 25.6976 115.439 54.0359 115.439 88.9884C115.439 108.488 124.25 125.915 138.093 137.525C128.63 140.801 120.2 145.186 113.06 150.436C97.5876 161.804 88.1754 177.223 87.5237 194.202C87.2994 200.159 87.9553 205.18 89.3392 209.447C112.988 215.303 144.302 218.862 178.658 218.862C213.095 218.862 244.48 215.282 268.146 209.409C269.416 205.134 270.004 200.13 269.788 194.202Z" fill="#D1B266"/>
-    </g>
-    <defs><clipPath id="fnd-fp-c"><rect width="357.204" height="218.788" fill="white"/></clipPath></defs>
-  </svg>
 
   <div class="container">
 
@@ -538,6 +467,7 @@
       <!-- Aside -->
       <aside class="founder-aside">
         <div class="founder-medallion">
+          <!-- put my pic -->
           <span class="founder-initial">SD</span>
           <span class="founder-initial-name">Shalom Donga</span>
         </div>
@@ -557,11 +487,11 @@
           </div>
           <div class="fact-item">
             <div class="fact-label">Team</div>
-            <div class="fact-value">Chinyemba Kalenga</div>
+            <div class="fact-value">Building now. See Collaborate</div>
           </div>
           <div class="fact-item">
             <div class="fact-label">Advisor</div>
-            <div class="fact-value">Kevin Cuccia<br>Louisiana Tech University</div>
+            <div class="fact-value">Terrance Range<br>3x Founder, Social Impact Investor</div>
           </div>
           <div class="fact-item">
             <div class="fact-label">Contact</div>
@@ -577,39 +507,37 @@
         <h2 style="color: var(--cream); margin-bottom: 1.6rem;">Shalom Donga</h2>
 
         <p>
-          VocalPrint is not a thesis project or a hackathon entry. It is a response to a
-          crisis I can see closing in real time — the last fluent speakers of minority and
-          endangered languages aging out, without anything designed to preserve what they
-          carry.
+          As Chinua Achebe famously said, “Until the lions have their own historians, the history of the hunt will always glorify the hunter.”
         </p>
 
         <p class="dim">
-          I am building this from the conviction that identity infrastructure matters more
-          than product features, and that community governance is not a nice-to-have — it
-          is the technical foundation. The governance framework ships before the first
-          recording is made. That is not idealism. That is the only defensible architecture
-          for data of this kind.
+          I am part of a community that exists across borders and outside the systems most people rely on. We are the Ndebele people, representing roughly 0.05% of the global population.
         </p>
 
         <p class="dim">
-          The ethical corrective must be built in from the start: communities whose voices
-          power the commercial layer must receive ongoing, transparent benefit from it —
-          not a one-time consent form, but structural revenue share and data sovereignty.
-          Unlike Reddit's informal governance, VocalPrint's must be formal, documented, and
-          legally binding, because downstream commercial use makes informal governance a
-          liability.
+          I study computer science at Grambling State University. Alongside that, I have built production-level Flutter applications and worked on multilingual AI evaluation. That work has made one thing clear to me: what gets modeled is a choice, and what is left out follows a pattern.
         </p>
 
-        <blockquote class="pullquote">
-          "The window for preservation is closing. Every two weeks, another language vanishes.
-          The urgency is not rhetorical — it is calendrical."
-        </blockquote>
-
-        <p class="dim" style="font-size: 0.88rem; margin-top: 0.5rem;">
-          VocalPrint is currently seeking legal counsel, academic collaborators, community
-          organizations, and mission-aligned investors to build the governance infrastructure
-          before any product is built. The founding documents are being drafted now.
+        <p class="dim">
+          I choose to work on problems that extend beyond my immediate sphere, building technology that reaches people it was not originally designed for and making it as inclusive as it can be.
         </p>
+
+        <p class="dim">
+          In the words of Toni Morrison, “If you have some power, then your job is to empower somebody else.”
+        </p>
+
+        <p class="dim">
+          VocalPrint is built with that principle in mind, with governance, consent, and structure treated as foundational decisions rather than afterthoughts.
+        </p>
+
+        <p class="dim">
+          VocalPrint is in its founding phase. If you are a researcher, builder, or organization working in language, AI, or community infrastructure, or you are just interested, scroll down to the Collaborate section.
+        </p>
+
+        <p class="dim">
+          Because, as Nelson Mandela reminded us, “If you talk to a man in a language he understands, that goes to his head. If you talk to him in his language, that goes to his heart.”
+        </p>
+
       </div>
 
     </div><!-- .founder-grid -->
@@ -741,7 +669,7 @@
   <div class="container">
     <div class="footer-inner">
 
-      <!-- Footer mark — inline SVG waveform -->
+      <!-- Footer mark — inline SVG waveform | replace with the logo -->
       <svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="50" cy="50" r="48" fill="#0D3528"/>
         <circle cx="50" cy="50" r="44" fill="none" stroke="#D1B266" stroke-width="1.8" stroke-dasharray="5.5 2.5"/>
@@ -764,15 +692,12 @@
       <div class="footer-rule"></div>
 
       <p class="footer-description">
-        A living, crowdsourced, AI-curated museum of sound — voice and language as identity,
-        data, and infrastructure. Currently in founding phase. Governance infrastructure
-        in design. Grambling, Louisiana.
+        A living, crowdsourced, AI-curated museum of sound. Voice and language as identity,
+        data, and infrastructure.
       </p>
 
       <div class="footer-contact">
         <a href="mailto:shalomdonga@gmail.com">shalomdonga@gmail.com</a>
-        <span>·</span>
-        <span style="color: rgba(241,232,207,0.4);">Shalom Donga, Founder</span>
       </div>
 
       <div class="footer-copy">© 2025 VocalPrint &nbsp;·&nbsp; All rights reserved</div>
