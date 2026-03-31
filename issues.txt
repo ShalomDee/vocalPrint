@@ -1,0 +1,24 @@
+in the pdf the font styles i used are given below with the alternatives to change them for that are mainly google gonts or general fonts that can easuly be accessed from any device. update accordingly:
+BrightWall (font on pdf)
+Permanent Marker
+Pacifico
+Caveat Brush
+
+Barlow Condensed (font on pdf)
+Roboto Condensed
+Archivo Narrow
+Arial Narrow
+Oswald
+
+Cakerolli (font on pdf)
+Fredoka One
+Baloo 2
+Comic Sans MS
+
+and these were the bg colors, the ones i put in the graphics file as green/purple/cream:
+245d55, 502739, f1e8cf 
+
+and then these were the overlays or graphics on top that gave off texture etc:
+change1_12(1)
+group 1
+change1_12
