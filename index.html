@@ -5,981 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VocalPrint — The Living Sound Museum</title>
   <meta name="description" content="VocalPrint is a living, crowdsourced, AI-curated museum of sound — voice and language as identity, data, and infrastructure.">
+
+  <!-- Preconnect for font performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Pacifico&family=Roboto+Condensed:wght@400;700&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ─── RESET ─────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ─── TOKENS ─────────────────────────────────────────── */
-    :root {
-      --teal:        #245d55;
-      --teal-dark:   #0D3528;
-      --cream:       #f1e8cf;
-      --off-white:   #F5EDD6;
-      --dark-brown:  #2D1818;
-      --copper:      #804E1C;
-      --sand:        #DDD0AE;
-      --muted-gold:  #9A7F2E;
-      --gold:        #D1B266;
-      --purple:      #502739;
-      --gold-faint:  rgba(209,178,102,0.18);
-      --cream-faint: rgba(241,232,207,0.08);
-    }
-
-    /* ─── BASE ───────────────────────────────────────────── */
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--dark-brown);
-      background: var(--cream);
-      overflow-x: hidden;
-    }
-
-    /* ─── TYPOGRAPHY ─────────────────────────────────────── */
-    h1, h2, h3, blockquote {
-      font-family: 'Pacifico', 'Playfair Display', Georgia, serif;
-      line-height: 1.12;
-    }
-    h1 { font-size: clamp(2.6rem, 5.5vw, 5rem); font-weight: 700; }
-    h2 { font-size: clamp(1.9rem, 3.8vw, 3rem);  font-weight: 600; }
-    h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 600; }
-
-    p { margin-bottom: 1rem; }
-    p:last-child { margin-bottom: 0; }
-
-    .eyebrow {
-      font-family: 'Baloo 2', 'DM Sans', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      display: inline-block;
-      padding: 0.28em 0.75em;
-      border: 1px solid currentColor;
-      margin-bottom: 1.6rem;
-      color: var(--muted-gold);
-    }
-
-    /* ─── LAYOUT ─────────────────────────────────────────── */
-    .container {
-      width: min(1160px, 90%);
-      margin-inline: auto;
-    }
-
-    section { padding: 7rem 0; position: relative; }
-
-    /* ─── SECTION BACKGROUNDS ────────────────────────────── */
-    .bg-teal-dark { background: var(--teal-dark); color: var(--cream); }
-    .bg-teal      { background: var(--teal);      color: var(--cream); }
-    .bg-cream     { background: var(--cream);     color: var(--dark-brown); }
-    .bg-off-white { background: var(--off-white); color: var(--dark-brown); }
-
-    /* ─── NAV ────────────────────────────────────────────── */
-    #site-nav {
-      position: fixed;
-      inset-block-start: 0;
-      inset-inline: 0;
-      z-index: 200;
-      padding: 1.1rem 0;
-      background: rgba(10, 42, 30, 0.95);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(209,178,102,0.15);
-      transition: background 0.3s;
-    }
-
-    #site-nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .nav-mark {
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
-    }
-
-    .nav-text { display: flex; flex-direction: column; gap: 1px; }
-
-    .nav-name {
-      font-family: 'Roboto Condensed', 'Playfair Display', serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--cream);
-      line-height: 1;
-    }
-
-    .nav-sub {
-      font-size: 0.52rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-      line-height: 1;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.2rem;
-    }
-
-    nav a {
-      color: rgba(241,232,207,0.65);
-      text-decoration: none;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--gold); }
-
-    /* ─── HERO ───────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 9rem 2rem 6rem;
-      background: var(--teal-dark);
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 38%, rgba(34,102,92,0.5) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(209,178,102,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 25% at 80% 20%, rgba(128,78,28,0.05) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero-logo-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 2.8rem;
-      position: relative;
-    }
-
-    .hero-mark {
-      width: 120px;
-      height: 120px;
-      flex-shrink: 0;
-    }
-
-    .hero-wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.32em;
-      color: var(--cream);
-      text-transform: uppercase;
-    }
-
-    .hero-sub-wordmark {
-      font-size: 0.58rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border: 1px solid rgba(209,178,102,0.4);
-      padding: 0.4em 1.2em;
-      font-size: 0.62rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-      margin-bottom: 2.4rem;
-    }
-
-    .hero-badge-dot {
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    #hero h1 {
-      color: var(--cream);
-      max-width: 16ch;
-      margin-bottom: 1.6rem;
-      position: relative;
-    }
-
-    #hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-intro {
-      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
-      color: rgba(241,232,207,0.75);
-      max-width: 52ch;
-      line-height: 1.8;
-      margin: 0 auto 3.5rem;
-    }
-
-    .hero-waveform {
-      width: min(560px, 85%);
-      margin: 0 auto;
-      opacity: 0.28;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(241,232,207,0.3);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .scroll-hint::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, rgba(209,178,102,0.5), transparent);
-      animation: scrollDrop 2.2s ease-in-out infinite;
-    }
-
-    @keyframes scrollDrop {
-      0%   { opacity: 0.2; transform: scaleY(0.7) translateY(-4px); }
-      50%  { opacity: 0.8; transform: scaleY(1) translateY(0); }
-      100% { opacity: 0.2; transform: scaleY(0.7) translateY(4px); }
-    }
-
-    /* ─── WAVEFORM DIVIDERS ──────────────────────────────── */
-    .divider {
-      display: block;
-      width: 100%;
-      line-height: 0;
-      overflow: hidden;
-    }
-
-    /* ─── SECTION HEADER ─────────────────────────────────── */
-    .section-header { margin-bottom: 3.5rem; }
-
-    .bg-teal .eyebrow,
-    .bg-teal-dark .eyebrow {
-      color: var(--gold);
-      border-color: rgba(209,178,102,0.45);
-    }
-
-    /* ─── STAMP CARDS ────────────────────────────────────── */
-    .stamp {
-      position: relative;
-      padding: 2.5rem;
-      border: 1.5px dashed var(--gold);
-    }
-
-    .stamp::after {
-      content: '';
-      position: absolute;
-      inset: 7px;
-      border: 1px solid rgba(209,178,102,0.18);
-      pointer-events: none;
-    }
-
-    .bg-cream .stamp,
-    .bg-off-white .stamp {
-      border-color: var(--muted-gold);
-    }
-
-    .bg-cream .stamp::after,
-    .bg-off-white .stamp::after {
-      border-color: rgba(154,127,46,0.18);
-    }
-
-    .stamp-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--muted-gold);
-      display: block;
-      margin-bottom: 0.7rem;
-    }
-
-    .bg-teal .stamp-num { color: var(--gold); opacity: 0.7; }
-
-    /* ─── GRIDS ──────────────────────────────────────────── */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-      gap: 1.6rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.6rem;
-    }
-
-    /* ─── PULL QUOTE ─────────────────────────────────────── */
-    .pullquote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-      font-style: italic;
-      line-height: 1.6;
-      border-left: 3px solid var(--gold);
-      padding: 0.8rem 2rem;
-      margin: 2.5rem 0;
-      max-width: 64ch;
-    }
-
-    .bg-teal .pullquote  { color: rgba(241,232,207,0.88); }
-    .bg-cream .pullquote { color: var(--dark-brown); border-color: var(--teal); }
-    .bg-off-white .pullquote { color: var(--dark-brown); border-color: var(--teal); }
-
-    /* ─── STAT DISPLAY ───────────────────────────────────── */
-    .stat-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      margin: 1.2rem 0 1rem;
-    }
-
-    .stat-figure {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--teal);
-    }
-
-    .stat-caption {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-    }
-
-    /* ─── PROBLEM SECTION ────────────────────────────────── */
-    #problem { background: var(--cream); }
-
-    .problem-lead {
-      font-size: clamp(1rem, 1.35vw, 1.15rem);
-      line-height: 1.85;
-      max-width: 66ch;
-      margin-bottom: 3rem;
-      color: #4A2820;
-    }
-
-    .card-body {
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: #5A3428;
-      margin: 0;
-    }
-
-    .card-inline-quote {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--teal);
-      border-left: 2px solid var(--muted-gold);
-      padding-left: 1rem;
-      margin: 0.8rem 0;
-      line-height: 1.55;
-    }
-
-    .card-source {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--muted-gold);
-      display: block;
-      margin-top: 0.4rem;
-    }
-
-    /* ─── BUILDING SECTION ───────────────────────────────── */
-    #building { background: var(--teal); }
-
-    .manifesto-text {
-      font-size: clamp(1rem, 1.4vw, 1.18rem);
-      line-height: 1.85;
-      color: rgba(241,232,207,0.88);
-      max-width: 64ch;
-      margin-bottom: 3rem;
-    }
-
-    .phase-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 0.6rem;
-      opacity: 0.8;
-    }
-
-    .phase-card-body {
-      font-size: 0.88rem;
-      color: rgba(241,232,207,0.78);
-      line-height: 1.7;
-      margin: 0.7rem 0 0;
-    }
-
-    .phase-meta {
-      margin-top: 1.4rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(209,178,102,0.18);
-    }
-
-    .phase-meta-label {
-      font-size: 0.63rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-    }
-
-    .phase-meta-value {
-      font-size: 0.83rem;
-      color: rgba(241,232,207,0.65);
-      margin-top: 0.2rem;
-    }
-
-    /* ─── HOW SECTION ────────────────────────────────────── */
-    #how { background: var(--off-white); }
-
-    .governance-lead {
-      font-size: clamp(1rem, 1.35vw, 1.15rem);
-      line-height: 1.85;
-      max-width: 64ch;
-      margin-bottom: 0.8rem;
-    }
-
-    .governance-sub {
-      font-size: 0.9rem;
-      color: #5A3428;
-      max-width: 66ch;
-      margin-bottom: 3rem;
-    }
-
-    .doc-list-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-      margin-bottom: 1.2rem;
-    }
-
-    .doc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-bottom: 3rem;
-    }
-
-    .doc-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      padding: 1.2rem 1.5rem;
-      border-left: 2px solid var(--muted-gold);
-      background: rgba(154,127,46,0.04);
-      transition: background 0.2s;
-    }
-
-    .doc-item:hover { background: rgba(154,127,46,0.08); }
-
-    .doc-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--muted-gold);
-      line-height: 1;
-      flex-shrink: 0;
-      min-width: 1.8rem;
-    }
-
-    .doc-n-content { flex: 1; }
-
-    .doc-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--dark-brown);
-      margin-bottom: 0.3rem;
-    }
-
-    .doc-desc {
-      font-size: 0.85rem;
-      color: #5A3428;
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    /* ─── FLYWHEEL ────────────────────────────────────────── */
-    .flywheel-wrap {
-      position: relative;
-      padding: 2.5rem;
-      border: 1.5px dashed var(--muted-gold);
-      margin-top: 0.5rem;
-    }
-
-    .flywheel-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 7px;
-      border: 1px solid rgba(154,127,46,0.14);
-      pointer-events: none;
-    }
-
-    .flywheel-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-      margin-bottom: 1.5rem;
-    }
-
-    .flywheel-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0;
-      align-items: center;
-    }
-
-    .fw-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--dark-brown);
-      padding: 0.3rem 0;
-    }
-
-    .fw-dot {
-      width: 7px; height: 7px;
-      background: var(--muted-gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .fw-arrow {
-      color: var(--muted-gold);
-      font-size: 1rem;
-      padding: 0 0.3rem;
-      flex-shrink: 0;
-    }
-
-    /* ─── FOUNDER ─────────────────────────────────────────── */
-    #founder { background: var(--teal); }
-
-    .founder-grid {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .founder-aside {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.8rem;
-    }
-
-    .founder-medallion {
-      width: 160px;
-      height: 160px;
-      border: 1.5px dashed rgba(209,178,102,0.55);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
-
-    .founder-medallion::before {
-      content: '';
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(209,178,102,0.22);
-      border-radius: 50%;
-    }
-
-    .founder-initial {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .founder-initial-name {
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(241,232,207,0.5);
-      margin-top: 0.25rem;
-    }
-
-    .founder-facts {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .fact-item {
-      border-bottom: 1px solid rgba(209,178,102,0.12);
-      padding-bottom: 0.9rem;
-    }
-
-    .fact-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .fact-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.65;
-      margin-bottom: 0.2rem;
-    }
-
-    .fact-value {
-      font-size: 0.82rem;
-      color: rgba(241,232,207,0.8);
-      line-height: 1.4;
-    }
-
-    .fact-value a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    .founder-body p {
-      color: rgba(241,232,207,0.82);
-      line-height: 1.8;
-    }
-
-    .founder-body p.dim { color: rgba(241,232,207,0.65); }
-
-    /* ─── CONTACT SECTION ────────────────────────────────── */
-    #contact { background: var(--cream); }
-
-    .contact-lead {
-      font-size: clamp(1rem, 1.35vw, 1.15rem);
-      line-height: 1.85;
-      max-width: 60ch;
-      margin-bottom: 3.5rem;
-      color: #4A2820;
-    }
-
-    .audience-card {
-      position: relative;
-      padding: 2.5rem;
-      border: 1.5px dashed var(--muted-gold);
-      transition: border-color 0.25s;
-    }
-
-    .audience-card::after {
-      content: '';
-      position: absolute;
-      inset: 7px;
-      border: 1px solid rgba(154,127,46,0.14);
-      pointer-events: none;
-      transition: border-color 0.25s;
-    }
-
-    .audience-card:hover { border-color: var(--teal); }
-    .audience-card:hover::after { border-color: rgba(34,102,92,0.18); }
-
-    .audience-tag {
-      display: inline-block;
-      font-size: 0.63rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-      border: 1px solid var(--muted-gold);
-      padding: 0.22em 0.6em;
-      margin-bottom: 1rem;
-    }
-
-    .audience-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.9rem;
-      color: var(--dark-brown);
-    }
-
-    .audience-body {
-      font-size: 0.87rem;
-      color: #5A3428;
-      line-height: 1.7;
-      margin-bottom: 1.6rem;
-    }
-
-    .cta-link {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.74rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--teal);
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--teal);
-      padding-bottom: 0.08em;
-      display: inline-block;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .cta-link:hover { color: var(--muted-gold); border-color: var(--muted-gold); }
-
-    /* ─── FOOTER ─────────────────────────────────────────── */
-    footer {
-      background: var(--teal-dark);
-      padding: 4.5rem 0 3rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.4rem;
-      text-align: center;
-    }
-
-    .footer-rule {
-      width: 64px;
-      height: 1px;
-      background: rgba(209,178,102,0.3);
-    }
-
-    .footer-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--cream);
-    }
-
-    .footer-tagline {
-      font-size: 0.6rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted-gold);
-    }
-
-    .footer-description {
-      font-size: 0.83rem;
-      color: rgba(241,232,207,0.4);
-      max-width: 48ch;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .footer-contact {
-      font-size: 0.85rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .footer-contact a {
-      color: var(--gold);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .footer-contact a:hover { opacity: 0.75; }
-
-    .footer-contact span { color: rgba(241,232,207,0.25); }
-
-    .footer-copy {
-      font-size: 0.68rem;
-      color: rgba(241,232,207,0.2);
-      letter-spacing: 0.1em;
-    }
-
-    /* ─── DECORATIVE ELEMENTS ───────────────────────────── */
-    .hero-wave-accent {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 180px;
-      opacity: 0.09;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-wave-accent-right {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 180px;
-      opacity: 0.09;
-      pointer-events: none;
-      z-index: 0;
-      transform: scaleX(-1);
-    }
-
-    .section-side-decor {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 80px;
-      opacity: 0.07;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .section-side-decor svg {
-      height: 100%;
-      width: auto;
-    }
-
-    .section-side-decor-left {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 80px;
-      opacity: 0.07;
-      pointer-events: none;
-      overflow: hidden;
-      transform: scaleX(-1);
-    }
-
-    .section-side-decor-left svg {
-      height: 100%;
-      width: auto;
-    }
-
-    .hero-community-mark {
-      position: relative;
-      z-index: 1;
-    }
-
-    .stamp-icon {
-      position: absolute;
-      top: -14px;
-      right: -14px;
-      width: 56px;
-      height: 56px;
-      opacity: 0.9;
-    }
-
-    .stamp-icon-cream {
-      position: absolute;
-      top: -14px;
-      right: -14px;
-      width: 56px;
-      height: 56px;
-      opacity: 0.9;
-    }
-
-    /* ─── BORDER DECORATIONS ───────────────────────────────  */
-    .stamp::before,
-    .flywheel-wrap::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 12px;
-      background-size: cover;
-      background-repeat: repeat-x;
-      background-image: url('data:image/svg+xml;utf8,<svg width="200" height="16" viewBox="0 0 200 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 8C10 4 20 4 30 8C40 12 50 12 60 8C70 4 80 4 90 8C100 12 110 12 120 8C130 4 140 4 150 8C160 12 170 12 180 8C190 4 200 4 200 8" stroke="%23D1B266" stroke-width="2" fill="none"/></svg>');
-      opacity: 0.6;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* ─── TEXTURE OVERLAYS ──────────────────────────────────  */
-    .bg-teal::after,
-    .bg-cream::after,
-    .bg-off-white::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image:
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 2px,
-          rgba(221,208,174,0.02) 2px,
-          rgba(221,208,174,0.02) 4px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 1px,
-          rgba(209,178,102,0.01) 1px,
-          rgba(209,178,102,0.01) 2px
-        );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 820px) {
-      nav ul { display: none; }
-
-      .founder-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .founder-aside {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-
-      .founder-facts { max-width: 280px; }
-    }
-
-    @media (max-width: 600px) {
-      section { padding: 5rem 0; }
-      #hero   { padding: 7rem 1.5rem 5rem; }
-
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-
-      .flywheel-row { flex-direction: column; align-items: flex-start; }
-
-      .founder-aside { flex-direction: column; align-items: center; }
-      .founder-facts { max-width: 100%; }
-    }
-  </style>
+  <!--
+    Typography system (aligned with PDF design deck fonts):
+    ┌─────────────────────────┬──────────────────────────────────────────┐
+    │ PDF font                │ Role → Web substitution                  │
+    ├─────────────────────────┼──────────────────────────────────────────┤
+    │ BrightWall              │ h1 / primary titles  → Permanent Marker  │
+    │ Barlow Condensed        │ h2 / h3 / section    → Roboto Condensed  │
+    │ Cakerolli               │ body text            → Baloo 2           │
+    │ (editorial / quotes)    │ blockquotes          → Playfair Display  │
+    └─────────────────────────┴──────────────────────────────────────────┘
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Baloo+2:wght@400;500;600&family=Roboto+Condensed:wght@400;600&family=Permanent+Marker&family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -989,25 +33,27 @@
 <nav id="site-nav">
   <div class="container">
     <a href="#hero" class="nav-brand">
-      <!-- Tiny logo mark -->
-      <svg class="nav-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Inline SVG waveform mark — nav -->
+      <svg class="nav-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="40" cy="40" r="38" fill="#0D3528"/>
         <circle cx="40" cy="40" r="35" fill="none" stroke="#D1B266" stroke-width="1.8" stroke-dasharray="5 2.5"/>
         <circle cx="40" cy="40" r="28" fill="none" stroke="#22665C" stroke-width="0.8" opacity="0.6"/>
-        <circle cx="40" cy="40" r="21" fill="none" stroke="#22665C" stroke-width="0.8" opacity="0.4"/>
-        <rect x="18" y="30" width="4" height="20" rx="1.5" fill="#9A7F2E" opacity="0.85"/>
-        <rect x="24" y="24" width="4" height="32" rx="1.5" fill="#D1B266"/>
-        <rect x="30" y="21" width="4" height="38" rx="1.5" fill="#D1B266"/>
-        <rect x="36" y="18" width="4" height="44" rx="1.5" fill="#D1B266"/>
-        <rect x="42" y="22" width="4" height="36" rx="1.5" fill="#D1B266"/>
-        <rect x="48" y="26" width="4" height="28" rx="1.5" fill="#9A7F2E" opacity="0.9"/>
-        <rect x="54" y="31" width="4" height="18" rx="1.5" fill="#9A7F2E" opacity="0.8"/>
+        <circle cx="40" cy="40" r="21" fill="none" stroke="#22665C" stroke-width="0.6" opacity="0.35"/>
+        <rect x="14" y="31" width="4"   height="18" rx="2" fill="#9A7F2E" opacity="0.8"/>
+        <rect x="20" y="25" width="4"   height="30" rx="2" fill="#D1B266"/>
+        <rect x="26" y="19" width="4"   height="42" rx="2" fill="#D1B266"/>
+        <rect x="32" y="14" width="4.5" height="52" rx="2" fill="#D1B266"/>
+        <rect x="38.5" y="20" width="4.5" height="40" rx="2" fill="#D1B266"/>
+        <rect x="45.5" y="26" width="4" height="28" rx="2" fill="#9A7F2E" opacity="0.9"/>
+        <rect x="51.5" y="32" width="4" height="16" rx="2" fill="#9A7F2E" opacity="0.8"/>
+        <rect x="57.5" y="37" width="4" height="6"  rx="2" fill="#9A7F2E" opacity="0.6"/>
       </svg>
       <div class="nav-text">
         <span class="nav-name">VocalPrint</span>
         <span class="nav-sub">The Living Sound Museum</span>
       </div>
     </a>
+
     <ul>
       <li><a href="#problem">Problem</a></li>
       <li><a href="#building">Vision</a></li>
@@ -1022,110 +68,83 @@
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- HERO                                                     -->
 <!-- ═══════════════════════════════════════════════════════ -->
-<section id="hero" class="bg-teal-dark">
+<section id="hero">
 
-  <!-- Decorative diagonal wave accent — top-left (I.svg) -->
+  <!-- Decorative diagonal wave accent — top-left -->
   <svg class="hero-wave-accent" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#ia-clip)"><g clip-path="url(#ia-clip2)">
-    <path d="M156.495 67.3061C156.416 67.2663 156.339 67.2164 156.269 67.1549L152.237 63.6698C151.783 63.2775 151.733 62.5901 152.127 62.1349C152.52 61.6798 153.203 61.6259 153.661 62.0233L157.692 65.5084C158.147 65.9007 158.196 66.5881 157.803 67.0432C157.471 67.427 156.93 67.5226 156.495 67.3061Z" fill="#f1e8cf"/><path d="M145.216 58.0452C145.171 58.0228 145.127 57.9975 145.085 57.9681C143.38 56.8007 141.506 55.6306 139.515 54.4892C138.994 54.1905 138.814 53.5255 139.113 53.0038C139.412 52.4822 140.064 52.3075 140.598 52.6006C142.638 53.7708 144.562 54.9725 146.314 56.1726C146.81 56.5114 146.936 57.1888 146.597 57.6848C146.286 58.1383 145.694 58.2831 145.216 58.0452Z" fill="#f1e8cf"/><path d="M167.152 76.517C167.072 76.4773 166.996 76.4273 166.925 76.3658L163.017 72.9876C162.562 72.5953 162.513 71.908 162.906 71.4528C163.298 70.9982 163.982 70.9429 164.44 71.3411L168.349 74.7193C168.803 75.1116 168.853 75.799 168.459 76.2542C168.127 76.6377 167.586 76.7335 167.152 76.517Z" fill="#f1e8cf"/><path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#f1e8cf"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#f1e8cf"/><path d="M57.0393 62.568C54.9858 61.5452 52.952 60.4472 50.9908 59.2952C50.4729 58.9911 50.2993 58.3245 50.6044 57.806C50.9083 57.2875 51.5704 57.1113 52.0932 57.4185C59.7917 61.9372 68.617 65.6144 75.1251 67.0116L102.983 72.9901C113.373 75.2191 128.367 82.6868 136.407 89.6376L157.962 108.27C158.417 108.662 158.466 109.35 158.073 109.805C157.68 110.259 156.994 110.311 156.539 109.916L134.984 91.2841C127.176 84.5351 112.615 77.2828 102.525 75.1175L74.6672 69.1391C69.6191 68.0566 63.2422 65.6574 57.0393 62.568Z" fill="#f1e8cf"/><path d="M38.9274 50.4472C38.8476 50.4075 38.7715 50.3575 38.7008 50.2961L31.4853 44.0584C31.0308 43.6661 30.9813 42.9788 31.3745 42.5236C31.7673 42.0693 32.4521 42.0142 32.9088 42.4119L40.1243 48.6495C40.5788 49.0418 40.6283 49.7292 40.2351 50.1844C39.903 50.5679 39.3618 50.6636 38.9274 50.4472Z" fill="#f1e8cf"/><path d="M24.0946 37.6253C24.0149 37.5856 23.9387 37.5356 23.868 37.4741L19.6827 33.8563C19.2282 33.464 19.1787 32.7766 19.5719 32.3215C19.9651 31.8663 20.6499 31.8134 21.1062 32.2098L25.2915 35.8276C25.746 36.2199 25.7955 36.9073 25.4023 37.3625C25.07 37.7465 24.5293 37.8418 24.0946 37.6253Z" fill="#f1e8cf"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#f1e8cf"/><path d="M141.958 139.797C141.878 139.758 141.802 139.708 141.731 139.646L138.183 136.579C137.728 136.186 137.679 135.499 138.072 135.044C138.465 134.589 139.149 134.534 139.606 134.932L143.155 138C143.609 138.392 143.659 139.08 143.265 139.535C142.933 139.919 142.392 140.014 141.958 139.797Z" fill="#f1e8cf"/><path d="M134.252 133.136C134.172 133.096 134.096 133.047 134.025 132.985L123.699 124.059C123.245 123.666 123.195 122.979 123.588 122.524C123.981 122.07 124.666 122.014 125.123 122.412L135.448 131.339C135.903 131.731 135.952 132.418 135.559 132.873C135.227 133.257 134.686 133.353 134.252 133.136Z" fill="#f1e8cf"/><path d="M42.264 92.3144C36.2116 89.2999 30.4544 85.6963 26.4346 82.2219L4.87487 63.586C4.42068 63.1939 4.37086 62.5064 4.7641 62.0512C5.15635 61.5966 5.84249 61.5423 6.29838 61.9395L27.8581 80.5754C35.6659 87.3236 50.2273 94.5761 60.3173 96.7415L88.1752 102.72C97.3972 104.699 110.309 110.784 118.879 117.189C119.36 117.549 119.458 118.23 119.098 118.712C118.739 119.193 118.058 119.297 117.576 118.932C109.362 112.793 96.5256 106.738 87.7179 104.848L59.8599 98.8692C54.6634 97.7546 48.3164 95.3288 42.264 92.3144Z" fill="#f1e8cf"/>
+    <path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#D1B266"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#D1B266"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#D1B266"/>
     </g></g>
-    <defs>
-      <clipPath id="ia-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath>
-      <clipPath id="ia-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath>
-    </defs>
+    <defs><clipPath id="ia-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath><clipPath id="ia-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath></defs>
   </svg>
 
   <!-- Decorative diagonal wave accent — top-right (mirrored) -->
   <svg class="hero-wave-accent-right" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#iar-clip)"><g clip-path="url(#iar-clip2)">
-    <path d="M156.495 67.3061C156.416 67.2663 156.339 67.2164 156.269 67.1549L152.237 63.6698C151.783 63.2775 151.733 62.5901 152.127 62.1349C152.52 61.6798 153.203 61.6259 153.661 62.0233L157.692 65.5084C158.147 65.9007 158.196 66.5881 157.803 67.0432C157.471 67.427 156.93 67.5226 156.495 67.3061Z" fill="#f1e8cf"/><path d="M145.216 58.0452C145.171 58.0228 145.127 57.9975 145.085 57.9681C143.38 56.8007 141.506 55.6306 139.515 54.4892C138.994 54.1905 138.814 53.5255 139.113 53.0038C139.412 52.4822 140.064 52.3075 140.598 52.6006C142.638 53.7708 144.562 54.9725 146.314 56.1726C146.81 56.5114 146.936 57.1888 146.597 57.6848C146.286 58.1383 145.694 58.2831 145.216 58.0452Z" fill="#f1e8cf"/><path d="M167.152 76.517C167.072 76.4773 166.996 76.4273 166.925 76.3658L163.017 72.9876C162.562 72.5953 162.513 71.908 162.906 71.4528C163.298 70.9982 163.982 70.9429 164.44 71.3411L168.349 74.7193C168.803 75.1116 168.853 75.799 168.459 76.2542C168.127 76.6377 167.586 76.7335 167.152 76.517Z" fill="#f1e8cf"/><path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#f1e8cf"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#f1e8cf"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#f1e8cf"/><path d="M42.264 92.3144C36.2116 89.2999 30.4544 85.6963 26.4346 82.2219L4.87487 63.586C4.42068 63.1939 4.37086 62.5064 4.7641 62.0512C5.15635 61.5966 5.84249 61.5423 6.29838 61.9395L27.8581 80.5754C35.6659 87.3236 50.2273 94.5761 60.3173 96.7415L88.1752 102.72C97.3972 104.699 110.309 110.784 118.879 117.189C119.36 117.549 119.458 118.23 119.098 118.712C118.739 119.193 118.058 119.297 117.576 118.932C109.362 112.793 96.5256 106.738 87.7179 104.848L59.8599 98.8692C54.6634 97.7546 48.3164 95.3288 42.264 92.3144Z" fill="#f1e8cf"/>
+    <path d="M71.8788 32.8555C65.8264 29.841 60.0692 26.2374 56.0494 22.7631L34.4897 4.12716C34.0355 3.735 33.9857 3.04746 34.3789 2.5923C34.7712 2.1377 35.4573 2.08337 35.9132 2.48063L57.473 21.1165C65.2807 27.8647 79.8421 35.1172 89.9321 37.2826L117.79 43.261C123.017 44.3823 129.497 46.8318 136.047 50.1474C136.582 50.4191 136.796 51.0738 136.524 51.6099C136.253 52.1438 135.604 52.3582 135.069 52.0919C128.787 48.899 122.308 46.4564 117.332 45.3884L89.4741 39.41C84.2786 38.2949 77.9312 35.87 71.8788 32.8555Z" fill="#D1B266"/><path d="M64.4757 47.721C58.4233 44.7065 52.6661 41.1029 48.646 37.6277L27.086 18.9924C26.6318 18.6003 26.582 17.9127 26.9752 17.4576C27.3675 17.003 28.0536 16.9486 28.5095 17.3459L50.0695 35.9812C57.8778 42.7311 72.439 49.9835 82.5286 52.1473L110.387 58.1257C120.778 60.3554 135.771 67.8228 143.811 74.7732L165.366 93.4056C165.82 93.7979 165.87 94.4853 165.477 94.9404C165.084 95.3948 164.398 95.4465 163.942 95.0521L142.388 76.4198C134.581 69.672 120.02 62.4192 109.929 60.2531L82.0707 54.2747C76.8759 53.1603 70.5286 50.7358 64.4757 47.721Z" fill="#D1B266"/><path d="M49.6696 77.4509C43.6166 74.4362 37.8586 70.8322 33.8385 67.357L12.2785 48.7216C11.8243 48.3295 11.7745 47.6419 12.1677 47.1868C12.56 46.7322 13.2457 46.6787 13.702 47.0751L35.2621 65.7104C43.0695 72.4592 57.6318 79.7121 67.7209 81.877L95.579 87.8552C105.971 90.0851 120.964 97.5526 129.003 104.503L150.558 123.135C151.013 123.527 151.062 124.215 150.669 124.67C150.276 125.124 149.591 125.177 149.135 124.782L127.58 106.149C119.773 99.4015 105.212 92.1487 95.1211 89.9826L67.263 84.0045C62.0679 82.8899 55.722 80.4654 49.6696 77.4509Z" fill="#D1B266"/>
     </g></g>
-    <defs>
-      <clipPath id="iar-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath>
-      <clipPath id="iar-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath>
-    </defs>
+    <defs><clipPath id="iar-clip"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath><clipPath id="iar-clip2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath></defs>
   </svg>
 
-  <!-- Logo -->
+  <!-- Hero logo + wordmark -->
   <div class="hero-logo-wrap">
-    <svg class="hero-mark hero-community-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="heroGrad" cx="50%" cy="45%" r="52%">
-          <stop offset="0%"   stop-color="#22665C"/>
-          <stop offset="100%" stop-color="#081E14"/>
-        </radialGradient>
-        <clipPath id="hero-circle-clip">
-          <circle cx="100" cy="100" r="86"/>
-        </clipPath>
-      </defs>
-      <!-- Background circle -->
-      <circle cx="100" cy="100" r="98" fill="url(#heroGrad)"/>
-      <!-- Outer segmented stamp border -->
-      <circle cx="100" cy="100" r="92" fill="none" stroke="#D1B266" stroke-width="2.5" stroke-dasharray="7.5 3.5"/>
-      <!-- Concentric texture rings -->
-      <circle cx="100" cy="100" r="83" fill="none" stroke="#D1B266" stroke-width="0.7" opacity="0.3"/>
-      <circle cx="100" cy="100" r="72" fill="none" stroke="#D1B266" stroke-width="0.5" opacity="0.18"/>
-      <!-- Community silhouettes from Frame.svg, clipped to circle -->
-      <g clip-path="url(#hero-circle-clip)" transform="translate(17,60) scale(0.465)">
-        <path d="M357.059 158.546C356.467 142.576 347.605 128.076 333.05 117.378C326.326 112.441 318.39 108.314 309.49 105.234C322.512 94.3104 330.799 77.9167 330.799 59.574C330.799 26.6934 304.175 0.0330811 271.333 0.0330811C238.488 0.0330811 211.864 26.6934 211.864 59.574C211.864 77.9167 220.154 94.3104 233.177 105.234C224.272 108.314 216.346 112.441 209.625 117.378C195.071 128.072 186.221 142.576 185.608 158.546C185.392 164.152 186.01 168.872 187.313 172.893C209.557 178.397 239.017 181.749 271.333 181.749C303.73 181.749 333.254 178.38 355.519 172.855C356.712 168.838 357.267 164.126 357.059 158.546Z" fill="#DDD0AE" opacity="0.88"/>
-        <path d="M171.705 158.546C171.112 142.576 162.254 128.076 147.692 117.378C140.971 112.441 133.036 108.314 124.136 105.234C137.158 94.3104 145.444 77.9167 145.444 59.574C145.444 26.6934 118.82 0.0330811 85.979 0.0330811C53.1335 0.0330811 26.5092 26.6934 26.5092 59.574C26.5092 77.9167 34.8 94.3104 47.8222 105.234C38.9178 108.314 30.9911 112.441 24.2704 117.378C9.71619 128.072 0.862597 142.576 0.253172 158.546C0.0373337 164.152 0.655225 168.872 1.95872 172.893C24.2027 178.397 53.6625 181.749 85.979 181.749C118.376 181.749 147.899 178.38 170.164 172.855C171.358 168.838 171.912 164.126 171.705 158.546Z" fill="#DDD0AE" opacity="0.88"/>
-        <path d="M269.788 194.202C269.158 177.223 259.737 161.804 244.26 150.436C237.116 145.186 228.682 140.801 219.219 137.521C233.062 125.915 241.869 108.488 241.869 88.9884C241.869 54.0359 213.569 25.6976 178.658 25.6976C143.739 25.6976 115.439 54.0359 115.439 88.9884C115.439 108.488 124.25 125.915 138.093 137.525C128.63 140.801 120.2 145.186 113.06 150.436C97.5876 161.804 88.1754 177.223 87.5237 194.202C87.2994 200.159 87.9553 205.18 89.3392 209.447C112.988 215.303 144.302 218.862 178.658 218.862C213.095 218.862 244.48 215.282 268.146 209.409C269.416 205.134 270.004 200.13 269.788 194.202Z" fill="#D1B266" opacity="0.95"/>
+    <!-- Brand logo (non-brown variant) -->
+    <img src="graphics/brand/logo-stitch.png"
+         class="hero-mark hero-community-mark"
+         alt="VocalPrint"
+         width="120"
+         height="120"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <!-- Fallback inline SVG if image fails to load -->
+    <svg class="hero-mark hero-community-mark" style="display:none;" viewBox="0 0 358 219" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g clip-path="url(#hp-c)">
+        <path d="M357.059 158.546C356.467 142.576 347.605 128.076 333.05 117.378C326.326 112.441 318.39 108.314 309.49 105.234C322.512 94.3104 330.799 77.9167 330.799 59.574C330.799 26.6934 304.175 0.0330811 271.333 0.0330811C238.488 0.0330811 211.864 26.6934 211.864 59.574C211.864 77.9167 220.154 94.3104 233.177 105.234C224.272 108.314 216.346 112.441 209.625 117.378C195.071 128.072 186.221 142.576 185.608 158.546C185.392 164.152 186.01 168.872 187.313 172.893C209.557 178.397 239.017 181.749 271.333 181.749C303.73 181.749 333.254 178.38 355.519 172.855C356.712 168.838 357.267 164.126 357.059 158.546Z" fill="rgba(255,246,225,0.18)"/>
+        <path d="M171.705 158.546C171.112 142.576 162.254 128.076 147.692 117.378C140.971 112.441 133.036 108.314 124.136 105.234C137.158 94.3104 145.444 77.9167 145.444 59.574C145.444 26.6934 118.82 0.0330811 85.979 0.0330811C53.1335 0.0330811 26.5092 26.6934 26.5092 59.574C26.5092 77.9167 34.8 94.3104 47.8222 105.234C38.9178 108.314 30.9911 112.441 24.2704 117.378C9.71619 128.072 0.862597 142.576 0.253172 158.546C0.0373337 164.152 0.655225 168.872 1.95872 172.893C24.2027 178.397 53.6625 181.749 85.979 181.749C118.376 181.749 147.899 178.38 170.164 172.855C171.358 168.838 171.912 164.126 171.705 158.546Z" fill="rgba(255,246,225,0.18)"/>
+        <path d="M269.788 194.202C269.158 177.223 259.737 161.804 244.26 150.436C237.116 145.186 228.682 140.801 219.219 137.521C233.062 125.915 241.869 108.488 241.869 88.9884C241.869 54.0359 213.569 25.6976 178.658 25.6976C143.739 25.6976 115.439 54.0359 115.439 88.9884C115.439 108.488 124.25 125.915 138.093 137.525C128.63 140.801 120.2 145.186 113.06 150.436C97.5876 161.804 88.1754 177.223 87.5237 194.202C87.2994 200.159 87.9553 205.18 89.3392 209.447C112.988 215.303 144.302 218.862 178.658 218.862C213.095 218.862 244.48 215.282 268.146 209.409C269.416 205.134 270.004 200.13 269.788 194.202Z" fill="#D1B266" opacity="0.55"/>
       </g>
+      <defs><clipPath id="hp-c"><rect width="357.204" height="218.788" fill="white"/></clipPath></defs>
     </svg>
-    <span class="hero-wordmark">VocalPrint</span>
-    <span class="hero-sub-wordmark">The Living Sound Museum</span>
+    <div class="hero-wordmark">VocalPrint</div>
+    <div class="hero-sub-wordmark">The Living Sound Museum</div>
   </div>
 
+  <!-- Status badge -->
   <div class="hero-badge">
     <span class="hero-badge-dot"></span>
     Founded 2025 &nbsp;·&nbsp; Grambling, Louisiana &nbsp;·&nbsp; Pre-Launch
-    <span class="hero-badge-dot"></span>
   </div>
 
+  <!-- Headline -->
   <h1>Voice Is Identity.<br><em>Identity Is Data.</em><br>Data Has a Crisis.</h1>
 
+  <!-- Intro -->
   <p class="hero-intro">
-    A living, crowdsourced, AI-curated museum of sound —
-    voice and language as identity, data, and infrastructure.
-    Not a product landing page. A founding manifesto.
+    VocalPrint is a living, crowdsourced, AI-curated museum of sound — building the
+    identity infrastructure and verified voice corpus that AI companies need, and
+    communities deserve.
   </p>
 
-  <!-- Decorative waveform — Frame (2).svg: waveform landscape + EKG line -->
+  <!-- Decorative waveform -->
   <svg class="hero-waveform" viewBox="0 0 548 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#hw-clip)">
-      <path d="M542.534 394.753H525.186C522.792 394.753 520.85 396.699 520.85 399.097V436.539H507.839C505.445 436.539 503.502 438.485 503.502 440.883V444.358H494.829V418.079C494.829 415.681 492.886 413.735 490.492 413.735H477.482V408.045C477.482 405.647 475.539 403.701 473.145 403.701H460.134V387.89C460.134 385.492 458.192 383.546 455.798 383.546H442.787V375.902C442.787 373.504 440.844 371.558 438.45 371.558H425.44V359.005C425.44 356.607 423.497 354.661 421.103 354.661H403.756C401.362 354.661 399.419 356.607 399.419 359.005V371.558H386.409C384.015 371.558 382.072 373.504 382.072 375.902V431.066H373.399V405.352C373.399 402.954 371.456 401.008 369.062 401.008H351.715C349.321 401.008 347.378 402.954 347.378 405.352V424.594H334.367C331.973 424.594 330.031 426.54 330.031 428.938V478.239H313.759L337.442 319.173C338.058 316.167 340.179 313.843 343.115 312.966C346.033 312.106 349.052 312.866 351.19 315.021C358.814 322.731 365.571 323.308 369.907 322.435C379.852 320.45 383.733 303.614 388.638 282.3C393.929 259.326 400.516 230.736 414.42 230.736C426.134 230.736 430.956 254.326 435.211 275.141C440.198 299.544 445.359 324.776 463.079 324.776C483.64 324.776 486.459 291.265 488.948 261.702C490.076 248.319 491.958 225.923 496.16 224.246C498.389 223.334 500.089 223.638 501.807 225.232C504.695 227.995 508.572 229.224 512.462 228.638C516.179 228.065 519.358 225.841 521.184 222.522C526.986 211.897 528.92 200.434 530.625 190.322C532.923 176.709 534.736 165.959 544.416 161.276C546.575 160.234 547.478 157.636 546.437 155.477C545.396 153.314 542.807 152.406 540.647 153.453C526.93 160.082 524.571 174.068 522.073 188.872C520.403 198.771 518.677 209.005 513.581 218.339C512.918 219.542 511.89 219.933 511.144 220.046C509.956 220.233 508.724 219.833 507.752 218.904C503.528 214.968 498.251 214.008 492.921 216.185C484.195 219.664 482.521 234.697 480.309 260.968C478.349 284.228 475.669 316.085 463.083 316.085C452.441 316.085 447.805 293.406 443.715 273.395C438.555 248.15 433.22 222.044 414.425 222.044C393.621 222.044 386.487 253.015 380.19 280.345C377.193 293.359 372.666 313.023 368.203 313.913C364.937 314.569 361.295 312.888 357.348 308.9C352.916 304.426 346.667 302.837 340.634 304.644C334.671 306.429 330.191 311.328 328.903 317.666L304.994 478.239H295.267L274.134 321.415C273.873 319.499 272.382 317.979 270.469 317.701C268.578 317.431 266.692 318.435 265.889 320.198L259.588 334.05L243.217 247.22C242.887 245.478 241.534 244.11 239.795 243.767C238.038 243.424 236.282 244.171 235.319 245.661L227.314 257.988L223.189 246.086C222.617 244.436 221.112 243.285 219.373 243.176C217.642 243.076 215.994 244.01 215.214 245.574L209.697 256.65L199.736 224.086C199.159 222.196 197.294 220.958 195.408 221.019C193.434 221.102 191.769 222.505 191.348 224.438L172.648 310.725L166.598 301.164C165.701 299.748 164.074 298.962 162.413 299.175C160.752 299.375 159.356 300.513 158.823 302.103C157.808 305.121 153.653 313.739 148.059 313.739C141.753 313.739 136.692 291.53 132.624 273.682C125.16 240.931 116.695 203.805 90.3792 203.805C53.4254 203.805 44.8906 253.827 35.8527 306.789C28.9875 347.012 21.8882 388.607 2.02133 404.904C0.169519 406.425 -0.103699 409.161 1.41418 411.016C2.93639 412.871 5.66424 413.144 7.51605 411.624C29.8896 393.272 37.2665 350.052 44.3962 308.253C52.8052 259.005 60.7459 212.493 90.3792 212.493C109.778 212.493 117.757 247.498 124.167 275.623C130.13 301.777 134.836 322.431 148.059 322.431C155.331 322.431 160.349 317.114 163.393 312.332L170.983 324.32C171.924 325.81 173.659 326.588 175.406 326.275C177.137 325.967 178.512 324.642 178.885 322.917L196.31 242.52L204.589 269.581C205.109 271.28 206.61 272.492 208.379 272.639C210.127 272.796 211.822 271.84 212.62 270.25L218.384 258.679L222.031 269.212C222.573 270.78 223.961 271.901 225.605 272.101C227.244 272.296 228.862 271.545 229.764 270.159L236.707 259.469L253.612 349.131C253.963 350.991 255.477 352.411 257.35 352.637C259.228 352.858 261.036 351.846 261.817 350.126L267.555 337.508L286.519 478.243H269.315V404.44C269.315 402.042 267.373 400.096 264.979 400.096H251.968V387.195C251.968 384.797 250.025 382.851 247.631 382.851H230.284C227.89 382.851 225.947 384.797 225.947 387.195V395.709H217.274V382.417C217.274 380.019 215.331 378.073 212.937 378.073H195.59C193.196 378.073 191.253 380.019 191.253 382.417V438.841H178.243C175.849 438.841 173.906 440.787 173.906 443.185V452.176H165.232V445.096C165.232 442.699 163.289 440.753 160.896 440.753H147.885V382.417C147.885 380.019 145.942 378.073 143.548 378.073H130.538V369.647C130.538 367.249 128.595 365.303 126.201 365.303H113.191V361.437C113.191 359.039 111.248 357.093 108.854 357.093H95.8436V347.277C95.8436 344.879 93.9007 342.933 91.5068 342.933H74.1596C71.7657 342.933 69.8228 344.879 69.8228 347.277V379.159H56.8124C54.4185 379.159 52.4756 381.105 52.4756 383.503V413.17H39.4652C37.0713 413.17 35.1284 415.116 35.1284 417.514V444.749H22.118C19.7241 444.749 17.7812 446.695 17.7812 449.092V452.176H4.77086C2.37695 452.176 0.434064 454.122 0.434064 456.52V482.582C0.434064 484.98 2.37695 486.926 4.77086 486.926H287.686L295.375 543.976C295.666 546.121 297.483 547.724 299.643 547.737C299.651 547.737 299.66 547.737 299.673 547.737C301.82 547.737 303.645 546.165 303.962 544.032L312.467 486.926H542.534C544.927 486.926 546.87 484.98 546.87 482.582V399.097C546.87 396.695 544.927 394.753 542.534 394.753Z" fill="#22665C"/>
-      <path d="M2.87087 242.676C3.47369 242.972 4.12421 243.115 4.77039 243.115C5.72015 243.115 6.66123 242.802 7.43752 242.194L101.477 168.647L153.154 194.401C154.685 195.161 156.528 194.948 157.851 193.858L198.868 159.86L221.905 175.154C223.449 176.183 225.479 176.11 226.949 174.972L245.194 160.889L307.357 212.492C309.044 213.891 311.521 213.813 313.117 212.297L377.735 150.725H395.602C396.721 150.725 397.801 150.291 398.608 149.513L424.238 124.837H442.83C443.984 124.837 445.09 124.376 445.901 123.56L510.298 58.7783L517.761 76.5265C518.473 78.2162 520.203 79.2587 521.998 79.1762C523.824 79.0763 525.394 77.834 525.914 76.0748L546.688 6.01133C547.147 4.46498 546.714 2.79266 545.56 1.66765C544.407 0.54264 542.72 0.15171 541.197 0.642545L471.765 23.1428C470.022 23.7075 468.821 25.3103 468.764 27.1433C468.708 28.9763 469.809 30.6487 471.518 31.3176C471.518 31.3176 479.689 34.5232 488.184 37.8765L434.005 92.3896H415.465C414.346 92.3896 413.271 92.824 412.464 93.5972L386.79 118.278H368.975C367.86 118.278 366.793 118.708 365.986 119.472L309.873 172.943L248.52 122.391C246.959 121.106 244.717 121.075 243.116 122.305L223.05 137.807L199.926 122.148C198.33 121.067 196.21 121.171 194.731 122.4L151.35 158.37L100.457 132.347C98.9569 131.583 97.1485 131.752 95.8171 132.794L2.09892 206.072C1.04942 206.893 0.433594 208.157 0.433594 209.495V238.771C0.433594 240.431 1.37902 241.947 2.87087 242.676Z" fill="#22665C"/>
+      <path d="M2.87087 242.676C3.47369 242.972 4.12421 243.115 4.77039 243.115C5.72015 243.115 6.66123 242.802 7.43752 242.194L101.477 168.647L153.154 194.401C154.685 195.161 156.528 194.948 157.851 193.858L198.868 159.86L221.905 175.154C223.449 176.183 225.479 176.11 226.949 174.972L245.194 160.889L307.357 212.492C309.044 213.891 311.521 213.813 313.117 212.297L377.735 150.725H395.602C396.721 150.725 397.801 150.291 398.608 149.513L424.238 124.837H442.83C443.984 124.837 445.09 124.376 445.901 123.56L510.298 58.7783L517.761 76.5265C518.473 78.2162 520.203 79.2587 521.998 79.1762C523.824 79.0763 525.394 77.834 525.914 76.0748L546.688 6.01133C547.147 4.46498 546.714 2.79266 545.56 1.66765C544.407 0.54264 542.72 0.15171 541.197 0.642545L471.765 23.1428C470.022 23.7075 468.821 25.3103 468.764 27.1433C468.708 28.9763 469.809 30.6487 471.518 31.3176L488.184 37.8765L434.005 92.3896H415.465C414.346 92.3896 413.271 92.824 412.464 93.5972L386.79 118.278H368.975C367.86 118.278 366.793 118.708 365.986 119.472L309.873 172.943L248.52 122.391C246.959 121.106 244.717 121.075 243.116 122.305L223.05 137.807L199.926 122.148C198.33 121.067 196.21 121.171 194.731 122.4L151.35 158.37L100.457 132.347C98.9569 131.583 97.1485 131.752 95.8171 132.794L2.09892 206.072C1.04942 206.893 0.433594 208.157 0.433594 209.495V238.771C0.433594 240.431 1.37902 241.947 2.87087 242.676Z" fill="#D1B266"/>
     </g>
-    <defs>
-      <clipPath id="hw-clip">
-        <rect width="548" height="300" fill="white"/>
-      </clipPath>
-    </defs>
+    <defs><clipPath id="hw-clip"><rect width="548" height="300" fill="white"/></clipPath></defs>
   </svg>
 
-  <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  <!-- Scroll hint -->
+  <div class="scroll-hint">Scroll</div>
+
 </section>
 
 
-<!-- DIVIDER: teal-dark → cream -->
-<svg class="divider" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="72" fill="#0D3528"/>
-  <!-- Waveform bars in gold at top, cream fill below -->
-  <g id="div1-bars" fill="#D1B266" opacity="0.22"></g>
-  <path fill="#f1e8cf"
-    d="M0,58 L16,42 L32,54 L48,36 L64,50 L80,32 L96,48 L112,28 L128,46
-       L144,34 L160,52 L176,30 L192,44 L208,22 L224,40 L240,56 L256,38
-       L272,52 L288,28 L304,44 L320,34 L336,50 L352,24 L368,42 L384,56
-       L400,36 L416,48 L432,26 L448,44 L464,30 L480,52 L496,38 L512,54
-       L528,28 L544,46 L560,22 L576,40 L592,56 L608,34 L624,50 L640,30
-       L656,44 L672,24 L688,42 L704,58 L720,36 L736,48 L752,26 L768,44
-       L784,32 L800,52 L816,38 L832,54 L848,28 L864,46 L880,22 L896,40
-       L912,56 L928,34 L944,50 L960,30 L976,44 L992,24 L1008,42 L1024,58
-       L1040,36 L1056,48 L1072,26 L1088,44 L1104,32 L1120,52 L1136,38
-       L1152,54 L1168,28 L1184,46 L1200,22 L1216,40 L1232,56 L1248,34
-       L1264,50 L1280,30 L1296,44 L1312,24 L1328,42 L1344,58 L1360,36
-       L1376,48 L1392,26 L1408,44 L1424,34 L1440,52
-       L1440,72 L0,72 Z"/>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIVIDER: teal-dark → cream — clean border line          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1440" height="12" fill="#0D3528"/>
+  <rect y="12" width="1440" height="12" fill="#FFF6E1"/>
+  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.5"/>
 </svg>
 
 
@@ -1133,6 +152,12 @@
 <!-- PROBLEM — Exhibit 01                                    -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="problem" class="bg-cream" style="position:relative;overflow:hidden;">
+
+  <!-- Decorative: Africa map — represents the diasporic context -->
+  <img src="graphics/africa.svg"
+       class="section-bg-img section-bg-img--right"
+       alt="" aria-hidden="true">
+
   <!-- Diagonal sound-wave accent top-left -->
   <svg style="position:absolute;top:-15px;left:-15px;width:140px;opacity:0.06;pointer-events:none;" viewBox="0 0 178 143" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#prob-ia-c)"><g clip-path="url(#prob-ia-c2)">
@@ -1140,6 +165,7 @@
     </g></g>
     <defs><clipPath id="prob-ia-c"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath><clipPath id="prob-ia-c2"><rect width="158.81" height="79.6034" fill="white" transform="translate(35.4894) rotate(26.4763)"/></clipPath></defs>
   </svg>
+
   <div class="container">
 
     <div class="section-header">
@@ -1158,12 +184,11 @@
 
       <!-- Card 1 -->
       <div class="stamp" style="position:relative;">
-        <!-- Stamp corner badge -->
         <svg class="stamp-icon" viewBox="0 0 149 119" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M133.846 114.339C131.285 114.339 129.212 116.412 129.212 118.972H123.605C123.605 116.412 121.533 114.339 118.972 114.339C116.418 114.339 114.34 116.412 114.34 118.972H108.737C108.737 116.412 106.658 114.339 104.105 114.339C101.544 114.339 99.4709 116.412 99.4709 118.972H93.8623C93.8623 116.412 91.7914 114.339 89.2304 114.339C86.6748 114.339 84.5985 116.412 84.5985 118.972H78.9953C78.9953 116.412 76.9171 114.339 74.3615 114.339C71.8023 114.339 69.7296 116.412 69.7296 118.972H64.121C64.121 116.412 62.0483 114.339 59.489 114.339C56.928 114.339 54.8571 116.412 54.8571 118.972H49.2521C49.2521 116.412 47.1758 114.339 44.6202 114.339C42.0609 114.339 39.9882 116.412 39.9882 118.972H34.3796C34.3796 116.412 32.3069 114.339 29.7477 114.339C27.1867 114.339 25.1139 116.412 25.1139 118.972H19.5108C19.5108 116.412 17.4344 114.339 14.8788 114.339C12.3178 114.339 10.2451 116.412 10.2451 118.972H4.63828C4.63828 116.412 2.56558 114.339 0.00453628 114.339V108.733C2.56558 108.733 4.63828 106.661 4.63828 104.1C4.63828 101.541 2.56558 99.4691 0.00453628 99.4691V93.8613C2.56558 93.8613 4.63828 91.7889 4.63828 89.2301C4.63828 86.6695 2.56558 84.5971 0.00453628 84.5971V78.9912C2.56558 78.9912 4.63828 76.9188 4.63828 74.3581C4.63828 71.7993 2.56558 69.7269 0.00453628 69.7269V64.1192C2.56558 64.1192 4.63828 62.0468 4.63828 59.488C4.63828 56.9291 2.56558 54.8567 0.00453628 54.8567V49.249C2.56558 49.249 4.63828 47.1766 4.63828 44.6178C4.63828 42.0571 2.56558 39.9848 0.00453628 39.9848V34.3788C2.56558 34.3788 4.63828 32.3065 4.63828 29.7458C4.63828 27.187 2.56558 25.1146 0.00453628 25.1146V19.5069C2.56558 19.5069 4.63828 17.4345 4.63828 14.8756C4.63828 12.315 2.56558 10.2426 0.00453628 10.2426V4.63669C2.56558 4.63669 4.63828 2.5643 4.63828 0.00366211L10.2451 0.00366211C10.2451 2.5643 12.3178 4.63669 14.8788 4.63669C17.4344 4.63669 19.5108 2.5643 19.5108 0.00366211L25.1139 0.00366211C25.1139 2.5643 27.1867 4.63669 29.7477 4.63669C32.3069 4.63669 34.3796 2.5643 34.3796 0.00366211L39.9882 0.00366211C39.9882 2.5643 42.0609 4.63669 44.6202 4.63669C47.1758 4.63669 49.2521 2.5643 49.2521 0.00366211L54.8571 0.00366211C54.8571 2.5643 56.928 4.63669 59.489 4.63669C62.0483 4.63669 64.121 2.5643 64.121 0.00366211L69.7296 0.00366211C69.7296 2.5643 71.8023 4.63669 74.3615 4.63669C76.9171 4.63669 78.9953 2.5643 78.9953 0.00366211L84.5985 0.00366211C84.5985 2.5643 86.6748 4.63669 89.2304 4.63669C91.7914 4.63669 93.8623 2.5643 93.8623 0.00366211L99.4709 0.00366211C99.4709 2.5643 101.544 4.63669 104.105 4.63669C106.658 4.63669 108.737 2.5643 108.737 0.00366211L114.34 0.00366211C114.34 2.5643 116.418 4.63669 118.972 4.63669C121.533 4.63669 123.605 2.5643 123.605 0.00366211L129.212 0.00366211C129.212 2.5643 131.285 4.63669 133.846 4.63669C136.402 4.63669 138.478 2.5643 138.478 0.00366211L144.081 0.00366211C144.081 2.5643 146.159 4.63669 148.715 4.63669V10.2426C146.159 10.2426 144.081 12.315 144.081 14.8756C144.081 17.4345 146.159 19.5069 148.715 19.5069V25.1146C146.159 25.1146 144.081 27.187 144.081 29.7458C144.081 32.3065 146.159 34.3788 148.715 34.3788V39.9848C146.159 39.9848 144.081 42.0571 144.081 44.6178C144.081 47.1766 146.159 49.249 148.715 49.249V54.8567C146.159 54.8567 144.081 56.9291 144.081 59.488C144.081 62.0468 146.159 64.1192 148.715 64.1192V69.7269C146.159 69.7269 144.081 71.7993 144.081 74.3581C144.081 76.9188 146.159 78.9912 148.715 78.9912V84.5971C146.159 84.5971 144.081 86.6695 144.081 89.2301C144.081 91.7889 146.159 93.8613 148.715 93.8613V99.4691C146.159 99.4691 144.081 101.541 144.081 104.1C144.081 106.661 146.159 108.733 148.715 108.733V114.339C146.159 114.339 144.081 116.412 144.081 118.972H138.478C138.478 116.412 136.402 114.339 133.846 114.339Z" fill="#D1B266"/>
           <path d="M9.75881 109.22V9.7561L138.963 9.7561V109.22L9.75881 109.22Z" fill="#f1e8cf"/>
         </svg>
-        <span class="stamp-num">01 &nbsp;/&nbsp; The AI Listening Gap</span>
+        <span class="stamp-num">01 / The AI Listening Gap</span>
         <h3>AI Cannot Hear You.</h3>
         <div class="stat-group">
           <span class="stat-figure">2×</span>
@@ -1175,13 +200,13 @@
           applicants, transcribing doctor–patient conversations, and grading students —
           and it mishears half the population at twice the rate of the other half.
         </p>
-        <p class="card-source">Source: ACM FAccT 2025 · Built In · Axios, Nov 2025</p>
+        <span class="card-source">Source: ACM FAccT 2025 · Built In · Axios, Nov 2025</span>
       </div>
 
       <!-- Card 2 -->
       <div class="stamp" style="position:relative;">
-        <svg class="stamp-icon" viewBox="0 0 149 119" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M133.846 114.339C131.285 114.339 129.212 116.412 129.212 118.972H123.605C123.605 116.412 121.533 114.339 118.972 114.339C116.418 114.339 114.34 116.412 114.34 118.972H108.737C108.737 116.412 106.658 114.339 104.105 114.339C101.544 114.339 99.4709 116.412 99.4709 118.972H93.8623C93.8623 116.412 91.7914 114.339 89.2304 114.339C86.6748 114.339 84.5985 116.412 84.5985 118.972H78.9953C78.9953 116.412 76.9171 114.339 74.3615 114.339C71.8023 114.339 69.7296 116.412 69.7296 118.972H64.121C64.121 116.412 62.0483 114.339 59.489 114.339C56.928 114.339 54.8571 116.412 54.8571 118.972H49.2521C49.2521 116.412 47.1758 114.339 44.6202 114.339C42.0609 114.339 39.9882 116.412 39.9882 118.972H34.3796C34.3796 116.412 32.3069 114.339 29.7477 114.339C27.1867 114.339 25.1139 116.412 25.1139 118.972H19.5108C19.5108 116.412 17.4344 114.339 14.8788 114.339C12.3178 114.339 10.2451 116.412 10.2451 118.972H4.63828C4.63828 116.412 2.56558 114.339 0.00453628 114.339V108.733C2.56558 108.733 4.63828 106.661 4.63828 104.1C4.63828 101.541 2.56558 99.4691 0.00453628 99.4691V93.8613C2.56558 93.8613 4.63828 91.7889 4.63828 89.2301C4.63828 86.6695 2.56558 84.5971 0.00453628 84.5971V78.9912C2.56558 78.9912 4.63828 76.9188 4.63828 74.3581C4.63828 71.7993 2.56558 69.7269 0.00453628 69.7269V64.1192C2.56558 64.1192 4.63828 62.0468 4.63828 59.488C4.63828 56.9291 2.56558 54.8567 0.00453628 54.8567V49.249C2.56558 49.249 4.63828 47.1766 4.63828 44.6178C4.63828 42.0571 2.56558 39.9848 0.00453628 39.9848V34.3788C2.56558 34.3788 4.63828 32.3065 4.63828 29.7458C4.63828 27.187 2.56558 25.1146 0.00453628 25.1146V19.5069C2.56558 19.5069 4.63828 17.4345 4.63828 14.8756C4.63828 12.315 2.56558 10.2426 0.00453628 10.2426V4.63669C2.56558 4.63669 4.63828 2.5643 4.63828 0.00366211L10.2451 0.00366211C10.2451 2.5643 12.3178 4.63669 14.8788 4.63669C17.4344 4.63669 19.5108 2.5643 19.5108 0.00366211L25.1139 0.00366211C25.1139 2.5643 27.1867 4.63669 29.7477 4.63669C32.3069 4.63669 34.3796 2.5643 34.3796 0.00366211L39.9882 0.00366211C39.9882 2.5643 42.0609 4.63669 44.6202 4.63669C47.1758 4.63669 49.2521 2.5643 49.2521 0.00366211L54.8571 0.00366211C54.8571 2.5643 56.928 4.63669 59.489 4.63669C62.0483 4.63669 64.121 2.5643 64.121 0.00366211L69.7296 0.00366211C69.7296 2.5643 71.8023 4.63669 74.3615 4.63669C76.9171 4.63669 78.9953 2.5643 78.9953 0.00366211L84.5985 0.00366211C84.5985 2.5643 86.6748 4.63669 89.2304 4.63669C91.7914 4.63669 93.8623 2.5643 93.8623 0.00366211L99.4709 0.00366211C99.4709 2.5643 101.544 4.63669 104.105 4.63669C106.658 4.63669 108.737 2.5643 108.737 0.00366211L114.34 0.00366211C114.34 2.5643 116.418 4.63669 118.972 4.63669C121.533 4.63669 123.605 2.5643 123.605 0.00366211L129.212 0.00366211C129.212 2.5643 131.285 4.63669 133.846 4.63669C136.402 4.63669 138.478 2.5643 138.478 0.00366211L144.081 0.00366211C144.081 2.5643 146.159 4.63669 148.715 4.63669V10.2426C146.159 10.2426 144.081 12.315 144.081 14.8756C144.081 17.4345 146.159 19.5069 148.715 19.5069V25.1146C146.159 25.1146 144.081 27.187 144.081 29.7458C144.081 32.3065 146.159 34.3788 148.715 34.3788V39.9848C146.159 39.9848 144.081 42.0571 144.081 44.6178C144.081 47.1766 146.159 49.249 148.715 49.249V54.8567C146.159 54.8567 144.081 56.9291 144.081 59.488C144.081 62.0468 146.159 64.1192 148.715 64.1192V69.7269C146.159 69.7269 144.081 71.7993 144.081 74.3581C144.081 76.9188 146.159 78.9912 148.715 78.9912V84.5971C146.159 84.5971 144.081 86.6695 144.081 89.2301C144.081 91.7889 146.159 93.8613 148.715 93.8613V99.4691C146.159 99.4691 144.081 101.541 144.081 104.1C144.081 106.661 146.159 108.733 148.715 108.733V114.339C146.159 114.339 144.081 116.412 144.081 118.972H138.478C138.478 116.412 136.402 114.339 133.846 114.339Z" fill="#D1B266"/><path d="M9.75881 109.22V9.7561L138.963 9.7561V109.22L9.75881 109.22Z" fill="#f1e8cf"/></svg>
-        <span class="stamp-num">02 &nbsp;/&nbsp; The Diasporic Wound</span>
+        <svg class="stamp-icon" viewBox="0 0 149 119" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M133.846 114.339C131.285 114.339 129.212 116.412 129.212 118.972H123.605C123.605 116.412 121.533 114.339 118.972 114.339C116.418 114.339 114.34 116.412 114.34 118.972H108.737C108.737 116.412 106.658 114.339 104.105 114.339C101.544 114.339 99.4709 116.412 99.4709 118.972H93.8623C93.8623 116.412 91.7914 114.339 89.2304 114.339C86.6748 114.339 84.5985 116.412 84.5985 118.972H78.9953C78.9953 116.412 76.9171 114.339 74.3615 114.339C71.8023 114.339 69.7296 116.412 69.7296 118.972H64.121C64.121 116.412 62.0483 114.339 59.489 114.339C56.928 114.339 54.8571 116.412 54.8571 118.972H49.2521C49.2521 116.412 47.1758 114.339 44.6202 114.339C42.0609 114.339 39.9882 116.412 39.9882 118.972H34.3796C34.3796 116.412 32.3069 114.339 29.7477 114.339C27.1867 114.339 25.1139 116.412 25.1139 118.972H19.5108C19.5108 116.412 17.4344 114.339 14.8788 114.339C12.3178 114.339 10.2451 116.412 10.2451 118.972H4.63828C4.63828 116.412 2.56558 114.339 0.00453628 114.339V108.733C2.56558 108.733 4.63828 106.661 4.63828 104.1C4.63828 101.541 2.56558 99.4691 0.00453628 99.4691V93.8613C2.56558 93.8613 4.63828 91.7889 4.63828 89.2301C4.63828 86.6695 2.56558 84.5971 0.00453628 84.5971V78.9912C2.56558 78.9912 4.63828 76.9188 4.63828 74.3581C4.63828 71.7993 2.56558 69.7269 0.00453628 69.7269V64.1192C2.56558 64.1192 4.63828 62.0468 4.63828 59.488C4.63828 56.9291 2.56558 54.8567 0.00453628 54.8567V49.249C2.56558 49.249 4.63828 47.1766 4.63828 44.6178C4.63828 42.0571 2.56558 39.9848 0.00453628 39.9848V34.3788C2.56558 34.3788 4.63828 32.3065 4.63828 29.7458C4.63828 27.187 2.56558 25.1146 0.00453628 25.1146V19.5069C2.56558 19.5069 4.63828 17.4345 4.63828 14.8756C4.63828 12.315 2.56558 10.2426 0.00453628 10.2426V4.63669C2.56558 4.63669 4.63828 2.5643 4.63828 0.00366211L10.2451 0.00366211C10.2451 2.5643 12.3178 4.63669 14.8788 4.63669C17.4344 4.63669 19.5108 2.5643 19.5108 0.00366211L25.1139 0.00366211C25.1139 2.5643 27.1867 4.63669 29.7477 4.63669C32.3069 4.63669 34.3796 2.5643 34.3796 0.00366211L39.9882 0.00366211C39.9882 2.5643 42.0609 4.63669 44.6202 4.63669C47.1758 4.63669 49.2521 2.5643 49.2521 0.00366211L54.8571 0.00366211C54.8571 2.5643 56.928 4.63669 59.489 4.63669C62.0483 4.63669 64.121 2.5643 64.121 0.00366211L69.7296 0.00366211C69.7296 2.5643 71.8023 4.63669 74.3615 4.63669C76.9171 4.63669 78.9953 2.5643 78.9953 0.00366211L84.5985 0.00366211C84.5985 2.5643 86.6748 4.63669 89.2304 4.63669C91.7914 4.63669 93.8623 2.5643 93.8623 0.00366211L99.4709 0.00366211C99.4709 2.5643 101.544 4.63669 104.105 4.63669C106.658 4.63669 108.737 2.5643 108.737 0.00366211L114.34 0.00366211C114.34 2.5643 116.418 4.63669 118.972 4.63669C121.533 4.63669 123.605 2.5643 123.605 0.00366211L129.212 0.00366211C129.212 2.5643 131.285 4.63669 133.846 4.63669C136.402 4.63669 138.478 2.5643 138.478 0.00366211L144.081 0.00366211C144.081 2.5643 146.159 4.63669 148.715 4.63669V10.2426C146.159 10.2426 144.081 12.315 144.081 14.8756C144.081 17.4345 146.159 19.5069 148.715 19.5069V25.1146C146.159 25.1146 144.081 27.187 144.081 29.7458C144.081 32.3065 146.159 34.3788 148.715 34.3788V39.9848C146.159 39.9848 144.081 42.0571 144.081 44.6178C144.081 47.1766 146.159 49.249 148.715 49.249V54.8567C146.159 54.8567 144.081 56.9291 144.081 59.488C144.081 62.0468 146.159 64.1192 148.715 64.1192V69.7269C146.159 69.7269 144.081 71.7993 144.081 74.3581C144.081 76.9188 146.159 78.9912 148.715 78.9912V84.5971C146.159 84.5971 144.081 86.6695 144.081 89.2301C144.081 91.7889 146.159 93.8613 148.715 93.8613V99.4691C146.159 99.4691 144.081 101.541 144.081 104.1C144.081 106.661 146.159 108.733 148.715 108.733V114.339C146.159 114.339 144.081 116.412 144.081 118.972H138.478C138.478 116.412 136.402 114.339 133.846 114.339Z" fill="#D1B266"/><path d="M9.75881 109.22V9.7561L138.963 9.7561V109.22L9.75881 109.22Z" fill="#FFF6E1"/></svg>
+        <span class="stamp-num">02 / The Diasporic Wound</span>
         <h3>A Grief Without a Name.</h3>
         <blockquote class="card-inline-quote">
           "Cultural bereavement: the experience of the uprooted person resulting from loss
@@ -1198,8 +223,8 @@
 
       <!-- Card 3 -->
       <div class="stamp" style="position:relative;">
-        <svg class="stamp-icon" viewBox="0 0 149 119" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M133.846 114.339C131.285 114.339 129.212 116.412 129.212 118.972H123.605C123.605 116.412 121.533 114.339 118.972 114.339C116.418 114.339 114.34 116.412 114.34 118.972H108.737C108.737 116.412 106.658 114.339 104.105 114.339C101.544 114.339 99.4709 116.412 99.4709 118.972H93.8623C93.8623 116.412 91.7914 114.339 89.2304 114.339C86.6748 114.339 84.5985 116.412 84.5985 118.972H78.9953C78.9953 116.412 76.9171 114.339 74.3615 114.339C71.8023 114.339 69.7296 116.412 69.7296 118.972H64.121C64.121 116.412 62.0483 114.339 59.489 114.339C56.928 114.339 54.8571 116.412 54.8571 118.972H49.2521C49.2521 116.412 47.1758 114.339 44.6202 114.339C42.0609 114.339 39.9882 116.412 39.9882 118.972H34.3796C34.3796 116.412 32.3069 114.339 29.7477 114.339C27.1867 114.339 25.1139 116.412 25.1139 118.972H19.5108C19.5108 116.412 17.4344 114.339 14.8788 114.339C12.3178 114.339 10.2451 116.412 10.2451 118.972H4.63828C4.63828 116.412 2.56558 114.339 0.00453628 114.339V108.733C2.56558 108.733 4.63828 106.661 4.63828 104.1C4.63828 101.541 2.56558 99.4691 0.00453628 99.4691V93.8613C2.56558 93.8613 4.63828 91.7889 4.63828 89.2301C4.63828 86.6695 2.56558 84.5971 0.00453628 84.5971V78.9912C2.56558 78.9912 4.63828 76.9188 4.63828 74.3581C4.63828 71.7993 2.56558 69.7269 0.00453628 69.7269V64.1192C2.56558 64.1192 4.63828 62.0468 4.63828 59.488C4.63828 56.9291 2.56558 54.8567 0.00453628 54.8567V49.249C2.56558 49.249 4.63828 47.1766 4.63828 44.6178C4.63828 42.0571 2.56558 39.9848 0.00453628 39.9848V34.3788C2.56558 34.3788 4.63828 32.3065 4.63828 29.7458C4.63828 27.187 2.56558 25.1146 0.00453628 25.1146V19.5069C2.56558 19.5069 4.63828 17.4345 4.63828 14.8756C4.63828 12.315 2.56558 10.2426 0.00453628 10.2426V4.63669C2.56558 4.63669 4.63828 2.5643 4.63828 0.00366211L10.2451 0.00366211C10.2451 2.5643 12.3178 4.63669 14.8788 4.63669C17.4344 4.63669 19.5108 2.5643 19.5108 0.00366211L25.1139 0.00366211C25.1139 2.5643 27.1867 4.63669 29.7477 4.63669C32.3069 4.63669 34.3796 2.5643 34.3796 0.00366211L39.9882 0.00366211C39.9882 2.5643 42.0609 4.63669 44.6202 4.63669C47.1758 4.63669 49.2521 2.5643 49.2521 0.00366211L54.8571 0.00366211C54.8571 2.5643 56.928 4.63669 59.489 4.63669C62.0483 4.63669 64.121 2.5643 64.121 0.00366211L69.7296 0.00366211C69.7296 2.5643 71.8023 4.63669 74.3615 4.63669C76.9171 4.63669 78.9953 2.5643 78.9953 0.00366211L84.5985 0.00366211C84.5985 2.5643 86.6748 4.63669 89.2304 4.63669C91.7914 4.63669 93.8623 2.5643 93.8623 0.00366211L99.4709 0.00366211C99.4709 2.5643 101.544 4.63669 104.105 4.63669C106.658 4.63669 108.737 2.5643 108.737 0.00366211L114.34 0.00366211C114.34 2.5643 116.418 4.63669 118.972 4.63669C121.533 4.63669 123.605 2.5643 123.605 0.00366211L129.212 0.00366211C129.212 2.5643 131.285 4.63669 133.846 4.63669C136.402 4.63669 138.478 2.5643 138.478 0.00366211L144.081 0.00366211C144.081 2.5643 146.159 4.63669 148.715 4.63669V10.2426C146.159 10.2426 144.081 12.315 144.081 14.8756C144.081 17.4345 146.159 19.5069 148.715 19.5069V25.1146C146.159 25.1146 144.081 27.187 144.081 29.7458C144.081 32.3065 146.159 34.3788 148.715 34.3788V39.9848C146.159 39.9848 144.081 42.0571 144.081 44.6178C144.081 47.1766 146.159 49.249 148.715 49.249V54.8567C146.159 54.8567 144.081 56.9291 144.081 59.488C144.081 62.0468 146.159 64.1192 148.715 64.1192V69.7269C146.159 69.7269 144.081 71.7993 144.081 74.3581C144.081 76.9188 146.159 78.9912 148.715 78.9912V84.5971C146.159 84.5971 144.081 86.6695 144.081 89.2301C144.081 91.7889 146.159 93.8613 148.715 93.8613V99.4691C146.159 99.4691 144.081 101.541 144.081 104.1C144.081 106.661 146.159 108.733 148.715 108.733V114.339C146.159 114.339 144.081 116.412 144.081 118.972H138.478C138.478 116.412 136.402 114.339 133.846 114.339Z" fill="#D1B266"/><path d="M9.75881 109.22V9.7561L138.963 9.7561V109.22L9.75881 109.22Z" fill="#f1e8cf"/></svg>
-        <span class="stamp-num">03 &nbsp;/&nbsp; The Corpus Vacuum</span>
+        <svg class="stamp-icon" viewBox="0 0 149 119" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M133.846 114.339C131.285 114.339 129.212 116.412 129.212 118.972H123.605C123.605 116.412 121.533 114.339 118.972 114.339C116.418 114.339 114.34 116.412 114.34 118.972H108.737C108.737 116.412 106.658 114.339 104.105 114.339C101.544 114.339 99.4709 116.412 99.4709 118.972H93.8623C93.8623 116.412 91.7914 114.339 89.2304 114.339C86.6748 114.339 84.5985 116.412 84.5985 118.972H78.9953C78.9953 116.412 76.9171 114.339 74.3615 114.339C71.8023 114.339 69.7296 116.412 69.7296 118.972H64.121C64.121 116.412 62.0483 114.339 59.489 114.339C56.928 114.339 54.8571 116.412 54.8571 118.972H49.2521C49.2521 116.412 47.1758 114.339 44.6202 114.339C42.0609 114.339 39.9882 116.412 39.9882 118.972H34.3796C34.3796 116.412 32.3069 114.339 29.7477 114.339C27.1867 114.339 25.1139 116.412 25.1139 118.972H19.5108C19.5108 116.412 17.4344 114.339 14.8788 114.339C12.3178 114.339 10.2451 116.412 10.2451 118.972H4.63828C4.63828 116.412 2.56558 114.339 0.00453628 114.339V108.733C2.56558 108.733 4.63828 106.661 4.63828 104.1C4.63828 101.541 2.56558 99.4691 0.00453628 99.4691V93.8613C2.56558 93.8613 4.63828 91.7889 4.63828 89.2301C4.63828 86.6695 2.56558 84.5971 0.00453628 84.5971V78.9912C2.56558 78.9912 4.63828 76.9188 4.63828 74.3581C4.63828 71.7993 2.56558 69.7269 0.00453628 69.7269V64.1192C2.56558 64.1192 4.63828 62.0468 4.63828 59.488C4.63828 56.9291 2.56558 54.8567 0.00453628 54.8567V49.249C2.56558 49.249 4.63828 47.1766 4.63828 44.6178C4.63828 42.0571 2.56558 39.9848 0.00453628 39.9848V34.3788C2.56558 34.3788 4.63828 32.3065 4.63828 29.7458C4.63828 27.187 2.56558 25.1146 0.00453628 25.1146V19.5069C2.56558 19.5069 4.63828 17.4345 4.63828 14.8756C4.63828 12.315 2.56558 10.2426 0.00453628 10.2426V4.63669C2.56558 4.63669 4.63828 2.5643 4.63828 0.00366211L10.2451 0.00366211C10.2451 2.5643 12.3178 4.63669 14.8788 4.63669C17.4344 4.63669 19.5108 2.5643 19.5108 0.00366211L25.1139 0.00366211C25.1139 2.5643 27.1867 4.63669 29.7477 4.63669C32.3069 4.63669 34.3796 2.5643 34.3796 0.00366211L39.9882 0.00366211C39.9882 2.5643 42.0609 4.63669 44.6202 4.63669C47.1758 4.63669 49.2521 2.5643 49.2521 0.00366211L54.8571 0.00366211C54.8571 2.5643 56.928 4.63669 59.489 4.63669C62.0483 4.63669 64.121 2.5643 64.121 0.00366211L69.7296 0.00366211C69.7296 2.5643 71.8023 4.63669 74.3615 4.63669C76.9171 4.63669 78.9953 2.5643 78.9953 0.00366211L84.5985 0.00366211C84.5985 2.5643 86.6748 4.63669 89.2304 4.63669C91.7914 4.63669 93.8623 2.5643 93.8623 0.00366211L99.4709 0.00366211C99.4709 2.5643 101.544 4.63669 104.105 4.63669C106.658 4.63669 108.737 2.5643 108.737 0.00366211L114.34 0.00366211C114.34 2.5643 116.418 4.63669 118.972 4.63669C121.533 4.63669 123.605 2.5643 123.605 0.00366211L129.212 0.00366211C129.212 2.5643 131.285 4.63669 133.846 4.63669C136.402 4.63669 138.478 2.5643 138.478 0.00366211L144.081 0.00366211C144.081 2.5643 146.159 4.63669 148.715 4.63669V10.2426C146.159 10.2426 144.081 12.315 144.081 14.8756C144.081 17.4345 146.159 19.5069 148.715 19.5069V25.1146C146.159 25.1146 144.081 27.187 144.081 29.7458C144.081 32.3065 146.159 34.3788 148.715 34.3788V39.9848C146.159 39.9848 144.081 42.0571 144.081 44.6178C144.081 47.1766 146.159 49.249 148.715 49.249V54.8567C146.159 54.8567 144.081 56.9291 144.081 59.488C144.081 62.0468 146.159 64.1192 148.715 64.1192V69.7269C146.159 69.7269 144.081 71.7993 144.081 74.3581C144.081 76.9188 146.159 78.9912 148.715 78.9912V84.5971C146.159 84.5971 144.081 86.6695 144.081 89.2301C144.081 91.7889 146.159 93.8613 148.715 93.8613V99.4691C146.159 99.4691 144.081 101.541 144.081 104.1C144.081 106.661 146.159 108.733 148.715 108.733V114.339C146.159 114.339 144.081 116.412 144.081 118.972H138.478C138.478 116.412 136.402 114.339 133.846 114.339Z" fill="#D1B266"/><path d="M9.75881 109.22V9.7561L138.963 9.7561V109.22L9.75881 109.22Z" fill="#FFF6E1"/></svg>
+        <span class="stamp-num">03 / The Corpus Vacuum</span>
         <h3>Infrastructure Nobody Built.</h3>
         <div class="stat-group">
           <span class="stat-figure">$71.77B</span>
@@ -1224,23 +249,13 @@
 </section>
 
 
-<!-- DIVIDER: cream → teal -->
-<svg class="divider" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="72" fill="#f1e8cf"/>
-  <path fill="#22665C"
-    d="M0,72 L0,50 L16,36 L32,52 L48,30 L64,46 L80,24 L96,42 L112,58
-       L128,38 L144,52 L160,26 L176,44 L192,32 L208,54 L224,40 L240,20
-       L256,38 L272,54 L288,30 L304,46 L320,28 L336,44 L352,60 L368,34
-       L384,50 L400,24 L416,42 L432,58 L448,36 L464,52 L480,28 L496,44
-       L512,32 L528,56 L544,40 L560,22 L576,40 L592,56 L608,32 L624,48
-       L640,26 L656,44 L672,60 L688,36 L704,52 L720,28 L736,46 L752,32
-       L768,50 L784,22 L800,40 L816,56 L832,34 L848,52 L864,28 L880,46
-       L896,62 L912,38 L928,54 L944,30 L960,48 L976,26 L992,44 L1008,60
-       L1024,36 L1040,52 L1056,28 L1072,46 L1088,32 L1104,56 L1120,40
-       L1136,22 L1152,40 L1168,56 L1184,32 L1200,48 L1216,26 L1232,44
-       L1248,60 L1264,36 L1280,52 L1296,28 L1312,46 L1328,32 L1344,54
-       L1360,38 L1376,56 L1392,30 L1408,48 L1424,34 L1440,52
-       L1440,72 Z"/>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIVIDER: cream → teal — clean border line               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1440" height="12" fill="#FFF6E1"/>
+  <rect y="12" width="1440" height="12" fill="#22665C"/>
+  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.5"/>
 </svg>
 
 
@@ -1248,6 +263,12 @@
 <!-- WHAT WE'RE BUILDING — Exhibit 02                        -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="building" class="bg-teal" style="position:relative;overflow:hidden;">
+
+  <!-- Decorative: world globe — global platform context -->
+  <img src="graphics/world-globe.svg"
+       class="section-bg-img section-bg-img--right"
+       alt="" aria-hidden="true">
+
   <!-- Community silhouette decoration — building section -->
   <svg style="position:absolute;bottom:-20px;right:-30px;width:260px;opacity:0.06;pointer-events:none;" viewBox="0 0 358 219" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#bld-fp-c)">
@@ -1348,23 +369,13 @@
 </section>
 
 
-<!-- DIVIDER: teal → off-white -->
-<svg class="divider" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="72" fill="#22665C"/>
-  <path fill="#F5EDD6"
-    d="M0,60 L18,44 L36,58 L54,32 L72,50 L90,28 L108,46 L126,62
-       L144,36 L162,54 L180,24 L198,42 L216,58 L234,34 L252,50
-       L270,26 L288,44 L306,60 L324,38 L342,54 L360,28 L378,46
-       L396,64 L414,38 L432,56 L450,30 L468,48 L486,22 L504,42
-       L522,58 L540,32 L558,50 L576,26 L594,44 L612,62 L630,36
-       L648,54 L666,28 L684,46 L702,64 L720,38 L738,56 L756,30
-       L774,48 L792,22 L810,42 L828,58 L846,32 L864,52 L882,26
-       L900,44 L918,62 L936,36 L954,54 L972,28 L990,46 L1008,64
-       L1026,38 L1044,56 L1062,30 L1080,48 L1098,22 L1116,42
-       L1134,60 L1152,34 L1170,52 L1188,26 L1206,44 L1224,62
-       L1242,36 L1260,54 L1278,28 L1296,46 L1314,64 L1332,38
-       L1350,56 L1368,30 L1386,48 L1404,26 L1422,44 L1440,62
-       L1440,72 L0,72 Z"/>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIVIDER: teal → off-white — clean border line           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1440" height="12" fill="#22665C"/>
+  <rect y="12" width="1440" height="12" fill="#F5EDD6"/>
+  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.45"/>
 </svg>
 
 
@@ -1372,6 +383,7 @@
 <!-- HOW WE'RE BUILDING IT — Exhibit 03                      -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="how" class="bg-off-white" style="position:relative;overflow:hidden;">
+
   <!-- Waveform visualization decoration — bottom right -->
   <svg style="position:absolute;bottom:-40px;right:-50px;width:200px;opacity:0.06;pointer-events:none;" viewBox="0 0 548 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M2.87087 242.676C3.47369 242.972 4.12421 243.115 4.77039 243.115C5.72015 243.115 6.66123 242.802 7.43752 242.194L101.477 168.647L153.154 194.401C154.685 195.161 156.528 194.948 157.851 193.858L198.868 159.86L221.905 175.154C223.449 176.183 225.479 176.11 226.949 174.972L245.194 160.889L307.357 212.492C309.044 213.891 311.521 213.813 313.117 212.297L377.735 150.725H395.602C396.721 150.725 397.801 150.291 398.608 149.513L424.238 124.837H442.83C443.984 124.837 445.09 124.376 445.901 123.56L510.298 58.7783L517.761 76.5265C518.473 78.2162 520.203 79.2587 521.998 79.1762C523.824 79.0763 525.394 77.834 525.914 76.0748L546.688 6.01133C547.147 4.46498 546.714 2.79266 545.56 1.66765C544.407 0.54264 542.72 0.15171 541.197 0.642545L471.765 23.1428C470.022 23.7075 468.821 25.3103 468.764 27.1433C468.708 28.9763 469.809 30.6487 471.518 31.3176C471.518 31.3176 479.689 34.5232 488.184 37.8765L434.005 92.3896H415.465C414.346 92.3896 413.271 92.824 412.464 93.5972L386.79 118.278H368.975C367.86 118.278 366.793 118.708 365.986 119.472L309.873 172.943L248.52 122.391C246.959 121.106 244.717 121.075 243.116 122.305L223.05 137.807L199.926 122.148C198.33 121.067 196.21 121.171 194.731 122.4L151.35 158.37L100.457 132.347C98.9569 131.583 97.1485 131.752 95.8171 132.794L2.09892 206.072C1.04942 206.893 0.433594 208.157 0.433594 209.495V238.771C0.433594 240.431 1.37902 241.947 2.87087 242.676Z" fill="#22665C"/>
@@ -1397,7 +409,11 @@
       start is irreversible. Getting it right is a moat.
     </p>
 
-    <div class="doc-list-label">Five Documents Before the First Recording</div>
+    <!-- Doc list label with book icon -->
+    <div class="doc-list-label">
+      <img src="graphics/book.svg" alt="" aria-hidden="true">
+      Five Documents Before the First Recording
+    </div>
 
     <ul class="doc-list">
       <li class="doc-item">
@@ -1480,22 +496,13 @@
 </section>
 
 
-<!-- DIVIDER: off-white → teal -->
-<svg class="divider" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="72" fill="#F5EDD6"/>
-  <path fill="#22665C"
-    d="M0,72 L0,54 L20,36 L40,54 L60,28 L80,48 L100,22 L120,42
-       L140,60 L160,34 L180,52 L200,26 L220,46 L240,64 L260,38
-       L280,56 L300,30 L320,50 L340,24 L360,44 L380,62 L400,36
-       L420,54 L440,28 L460,48 L480,22 L500,42 L520,60 L540,34
-       L560,52 L580,26 L600,46 L620,64 L640,38 L660,56 L680,30
-       L700,50 L720,24 L740,44 L760,62 L780,36 L800,54 L820,28
-       L840,48 L860,22 L880,42 L900,60 L920,34 L940,52 L960,26
-       L980,46 L1000,64 L1020,38 L1040,56 L1060,30 L1080,50
-       L1100,24 L1120,44 L1140,62 L1160,36 L1180,54 L1200,28
-       L1220,48 L1240,22 L1260,42 L1280,60 L1300,34 L1320,52
-       L1340,28 L1360,48 L1380,32 L1400,54 L1420,38 L1440,56
-       L1440,72 Z"/>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIVIDER: off-white → teal — clean border line           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1440" height="12" fill="#F5EDD6"/>
+  <rect y="12" width="1440" height="12" fill="#22665C"/>
+  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.45"/>
 </svg>
 
 
@@ -1503,6 +510,13 @@
 <!-- THE FOUNDER — Exhibit 04                                -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="founder" class="bg-teal" style="position:relative;overflow:hidden;">
+
+  <!-- Decorative: map — global language geography -->
+  <img src="graphics/map.svg"
+       class="section-bg-img section-bg-img--left"
+       alt="" aria-hidden="true"
+       style="opacity:0.04;">
+
   <!-- Community silhouette top-left decoration -->
   <svg style="position:absolute;top:0;left:-40px;width:220px;opacity:0.05;pointer-events:none;" viewBox="0 0 358 219" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g clip-path="url(#fnd-fp-c)">
@@ -1604,23 +618,13 @@
 </section>
 
 
-<!-- DIVIDER: teal → cream -->
-<svg class="divider" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="1440" height="72" fill="#22665C"/>
-  <path fill="#f1e8cf"
-    d="M0,58 L18,40 L36,56 L54,30 L72,48 L90,26 L108,44 L126,62
-       L144,34 L162,52 L180,24 L198,42 L216,60 L234,36 L252,52
-       L270,28 L288,46 L306,64 L324,38 L342,54 L360,26 L378,44
-       L396,62 L414,36 L432,54 L450,28 L468,46 L486,22 L504,40
-       L522,58 L540,32 L558,50 L576,24 L594,42 L612,60 L630,36
-       L648,52 L666,28 L684,46 L702,64 L720,38 L738,56 L756,30
-       L774,48 L792,22 L810,40 L828,58 L846,34 L864,52 L882,26
-       L900,44 L918,62 L936,36 L954,54 L972,28 L990,46 L1008,64
-       L1026,36 L1044,54 L1062,28 L1080,46 L1098,22 L1116,40
-       L1134,58 L1152,34 L1170,52 L1188,26 L1206,44 L1224,62
-       L1242,38 L1260,56 L1278,30 L1296,48 L1314,24 L1332,42
-       L1350,60 L1368,34 L1386,52 L1404,28 L1422,46 L1440,62
-       L1440,72 L0,72 Z"/>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIVIDER: teal → cream — clean border line               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<svg class="divider" viewBox="0 0 1440 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1440" height="12" fill="#22665C"/>
+  <rect y="12" width="1440" height="12" fill="#FFF6E1"/>
+  <line x1="0" y1="12" x2="1440" y2="12" stroke="#D1B266" stroke-width="1" opacity="0.5"/>
 </svg>
 
 
@@ -1628,6 +632,13 @@
 <!-- WORK WITH US — Exhibit 05                               -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <section id="contact" class="bg-cream">
+
+  <!-- Decorative: people icon — community collaboration -->
+  <img src="graphics/people.svg"
+       class="section-bg-img section-bg-img--bottom-right"
+       alt="" aria-hidden="true"
+       style="opacity:0.1; height:80px;">
+
   <div class="container">
 
     <div class="section-header">
@@ -1730,8 +741,8 @@
   <div class="container">
     <div class="footer-inner">
 
-      <!-- Footer mark -->
-      <svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+      <!-- Footer mark — inline SVG waveform -->
+      <svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="50" cy="50" r="48" fill="#0D3528"/>
         <circle cx="50" cy="50" r="44" fill="none" stroke="#D1B266" stroke-width="1.8" stroke-dasharray="5.5 2.5"/>
         <circle cx="50" cy="50" r="36" fill="none" stroke="#22665C" stroke-width="0.9" opacity="0.6"/>
@@ -1775,17 +786,13 @@
 <!-- SCRIPTS                                                  -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <script>
-  /* ── Hero waveform is now an inline SVG (Frame 2) — no JS needed ── */
-
   /* ── Nav scroll shadow ───────────────────────────────── */
   (function () {
     const nav = document.getElementById('site-nav');
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 60) {
-        nav.style.boxShadow = '0 2px 24px rgba(0,0,0,0.3)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
+      nav.style.boxShadow = window.scrollY > 60
+        ? '0 2px 24px rgba(0,0,0,0.3)'
+        : 'none';
     }, { passive: true });
   })();
 
@@ -1798,7 +805,9 @@
     `;
     document.head.appendChild(style);
 
-    const targets = document.querySelectorAll('.stamp, .audience-card, .doc-item, .pullquote, .flywheel-wrap');
+    const targets = document.querySelectorAll(
+      '.stamp, .audience-card, .doc-item, .pullquote, .flywheel-wrap'
+    );
     targets.forEach(el => el.classList.add('fade-in'));
 
     const observer = new IntersectionObserver(entries => {
