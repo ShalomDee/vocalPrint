@@ -1,0 +1,6 @@
+# Reference material — excluded from version control
+_reference/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
