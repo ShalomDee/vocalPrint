@@ -1041,7 +1041,7 @@ nav ul a:not(.nav-cta):hover::after {
 .founder-body p.dim { color: rgba(255,246,225,0.65); }
 
 /* ─── CONTACT SECTION ────────────────────────────────────── */
-#contact { background: var(--cream); }
+#contact { background: var(--cream); overflow: hidden; }
 
 .contact-lead {
   font-size: clamp(1rem, 1.35vw, 1.15rem);
@@ -1411,6 +1411,6 @@ footer {
   .section-bg-img--bottom-center { display: none; }
 }
 
-@media (max-width: 900px) and (orientation: landscape) {
+@media (orientation: landscape) and (max-height: 600px) {
   .section-bg-img--bottom-center { display: none; }
 }
