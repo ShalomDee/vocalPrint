@@ -1410,3 +1410,7 @@ footer {
   .section-bg-img--left,
   .section-bg-img--bottom-center { display: none; }
 }
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .section-bg-img--bottom-center { display: none; }
+}
