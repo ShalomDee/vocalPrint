@@ -1407,5 +1407,6 @@ footer {
   .founder-facts { max-width: 100%; }
 
   .section-bg-img--right,
-  .section-bg-img--left { display: none; }
+  .section-bg-img--left,
+  .section-bg-img--bottom-center { display: none; }
 }
